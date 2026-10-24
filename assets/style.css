@@ -49,8 +49,8 @@ h1{font-size:clamp(3.2rem,7.4vw,6.6rem);margin:18px 0 22px;letter-spacing:-.02em
 .collage{position:relative;aspect-ratio:4/5;max-height:80vh;width:100%}
 .collage figure{position:absolute;overflow:hidden;border-radius:18px;margin:0}
 .collage .a{inset:0 0 0 14%;animation:reveal 1.3s .1s both cubic-bezier(.2,.8,.2,1)}
-.collage .b{width:44%;aspect-ratio:4/5;left:0;bottom:6%;border:8px solid var(--paper);animation:reveal 1.3s .45s both cubic-bezier(.2,.8,.2,1)}
-.collage img{width:100%;height:100%;object-fit:cover}
+.collage .b{width:46%;aspect-ratio:1;left:0;bottom:6%;border:8px solid var(--paper);animation:reveal 1.3s .45s both cubic-bezier(.2,.8,.2,1)}
+.collage img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .tag{position:absolute;right:-4px;top:12%;z-index:2;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);padding:12px 20px;border-radius:999px;font-weight:500;font-size:.92rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.3)}
 @keyframes reveal{from{clip-path:inset(100% 0 0 0);scale:1.06}to{clip-path:inset(0);scale:1}}
 @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.collage{aspect-ratio:1/1;max-height:none}.tag{right:6px}}
@@ -168,12 +168,12 @@ mark.todo{background:#fde3ec;color:#8a1f45;padding:1px 8px;border-radius:8px;bor
   /* hero: photo edge to edge, text sheet slides over it */
   .hero{padding:0}
   .hero .wrap{width:100%;display:flex;flex-direction:column}
-  .collage{order:-1;aspect-ratio:auto;height:min(68svh,560px);max-height:none}
+  .collage{order:-1;aspect-ratio:auto;height:min(36svh,300px);max-height:none}
   .collage .a{inset:0;border-radius:0;animation:none}
   .collage .b{display:none}
   .collage::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(27,22,19,.55),transparent)}
-  .hero .wrap>div:first-child{position:relative;z-index:2;margin-top:-34px;background:var(--paper);border-radius:28px 28px 0 0;padding:30px 20px 36px}
-  h1{font-size:3.1rem;margin:12px 0 14px;line-height:1}
+  .hero .wrap>div:first-child{position:relative;z-index:2;margin-top:-26px;background:var(--paper);border-radius:24px 24px 0 0;padding:24px 20px 32px}
+  h1{font-size:3rem;margin:10px 0 12px;line-height:1}
   .hero .lead{font-size:1.04rem;margin-top:0}
   .cta{flex-direction:column;gap:10px;margin-top:24px}
   .cta .btn{width:100%;padding:17px}
@@ -191,8 +191,8 @@ mark.todo{background:#fde3ec;color:#8a1f45;padding:1px 8px;border-radius:8px;bor
   #galerie .gal-head{padding:0 20px}
   .masonry{display:flex;columns:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 20px 8px;margin-top:26px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .masonry::-webkit-scrollbar{display:none}
-  .shot{flex:0 0 78%;height:420px;margin:0;scroll-snap-align:center;border-radius:16px}
-  .shot img{height:100%;object-fit:cover}
+  .shot{flex:none;width:auto;height:min(52svh,400px);margin:0;scroll-snap-align:center;border-radius:16px}
+  .shot img{height:100%;width:auto;max-width:none}
   .shot:hover img{transform:none}
   #galerie .swipe{display:block;padding:12px 20px 0;color:var(--mut);font-size:.9rem}
 
