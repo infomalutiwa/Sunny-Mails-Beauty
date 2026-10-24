@@ -14,7 +14,6 @@ a{color:inherit;text-decoration:none}
 section{padding:clamp(64px,9vw,120px) 0}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
 h2{font-size:clamp(2.2rem,5vw,3.8rem)}
-em{font-style:italic;color:var(--gold)}
 .lead{color:var(--mut);max-width:50ch;margin-top:16px;font-size:1.08rem}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 32px;border-radius:999px;border:1.5px solid var(--ink);font:500 .98rem var(--sans);letter-spacing:.02em;cursor:pointer;transition:background .25s,color .25s,transform .25s}
 .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
@@ -48,9 +47,9 @@ h1{font-size:clamp(3.2rem,7.4vw,6.6rem);margin:18px 0 22px;letter-spacing:-.02em
 .facts{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:38px;padding-top:24px;border-top:1px solid var(--line);font-size:.96rem;color:var(--mut)}
 .facts b{color:var(--ink);font-weight:500}
 .collage{position:relative;aspect-ratio:4/5;max-height:80vh;width:100%}
-.collage figure{position:absolute;overflow:hidden;border-radius:240px 240px 24px 24px;margin:0}
+.collage figure{position:absolute;overflow:hidden;border-radius:18px;margin:0}
 .collage .a{inset:0 0 0 14%;animation:reveal 1.3s .1s both cubic-bezier(.2,.8,.2,1)}
-.collage .b{width:46%;aspect-ratio:1;left:0;bottom:7%;border-radius:50%;border:8px solid var(--paper);animation:reveal 1.3s .45s both cubic-bezier(.2,.8,.2,1)}
+.collage .b{width:44%;aspect-ratio:4/5;left:0;bottom:6%;border:8px solid var(--paper);animation:reveal 1.3s .45s both cubic-bezier(.2,.8,.2,1)}
 .collage img{width:100%;height:100%;object-fit:cover}
 .tag{position:absolute;right:-4px;top:12%;z-index:2;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);padding:12px 20px;border-radius:999px;font-weight:500;font-size:.92rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.3)}
 @keyframes reveal{from{clip-path:inset(100% 0 0 0);scale:1.06}to{clip-path:inset(0);scale:1}}
@@ -87,11 +86,11 @@ h1{font-size:clamp(3.2rem,7.4vw,6.6rem);margin:18px 0 22px;letter-spacing:-.02em
 .dark{background:var(--ink);color:#f5ece1}
 .dark .lead{color:rgba(245,236,225,.72)}
 .spa .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
-.spa .pic{aspect-ratio:4/5;border-radius:240px 240px 24px 24px;overflow:hidden}
+.spa .pic{aspect-ratio:4/5;border-radius:18px;overflow:hidden}
 .spa .pic img{width:100%;height:100%;object-fit:cover}
 .ticks{list-style:none;padding:0;margin:28px 0 34px;display:grid;gap:14px}
 .ticks li{display:flex;gap:14px}
-.ticks li::before{content:"";flex:none;width:9px;height:9px;margin-top:.55em;background:var(--gold-l);transform:rotate(45deg)}
+.ticks li::before{content:"";flex:none;width:14px;height:1.5px;margin-top:.8em;background:var(--gold-l)}
 @media(max-width:820px){.spa .wrap{grid-template-columns:1fr}.spa .pic{max-width:420px}}
 
 /* reviews */
@@ -155,3 +154,71 @@ mark.todo{background:#fde3ec;color:#8a1f45;padding:1px 8px;border-radius:8px;bor
 .rv-in{opacity:0;translate:0 24px;transition:opacity .8s,translate .8s cubic-bezier(.2,.8,.2,1)}
 .rv-in.in{opacity:1;translate:0 0}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv-in{opacity:1;translate:0 0}}
+
+/* ================= MOBILE ================= */
+@media(max-width:760px){
+  body{font-size:17px}
+  .wrap{width:calc(100% - 40px)}
+  section{padding:56px 0}
+  h2{font-size:2.3rem}
+  .top{display:none}
+  header.site .wrap{height:62px;width:calc(100% - 32px)}
+  .brand{font-size:1.3rem}.brand svg{width:32px;height:32px}
+
+  /* hero: photo edge to edge, text sheet slides over it */
+  .hero{padding:0}
+  .hero .wrap{width:100%;display:flex;flex-direction:column}
+  .collage{order:-1;aspect-ratio:auto;height:min(68svh,560px);max-height:none}
+  .collage .a{inset:0;border-radius:0;animation:none}
+  .collage .b{display:none}
+  .collage::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(27,22,19,.55),transparent)}
+  .hero .wrap>div:first-child{position:relative;z-index:2;margin-top:-34px;background:var(--paper);border-radius:28px 28px 0 0;padding:30px 20px 36px}
+  h1{font-size:3.1rem;margin:12px 0 14px;line-height:1}
+  .hero .lead{font-size:1.04rem;margin-top:0}
+  .cta{flex-direction:column;gap:10px;margin-top:24px}
+  .cta .btn{width:100%;padding:17px}
+  .facts{margin-top:26px;padding-top:18px;gap:6px 18px;font-size:.92rem}
+
+  /* services */
+  .svc-list{margin-top:30px}
+  .svc{padding:22px 0}.svc:hover{padding-left:0;background:none}
+  .svc h3{font-size:1.65rem}
+  .svc a{display:none}
+
+  /* gallery: swipe */
+  .gal-head .btn{display:none}
+  #galerie .wrap{width:100%}
+  #galerie .gal-head{padding:0 20px}
+  .masonry{display:flex;columns:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 20px 8px;margin-top:26px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .masonry::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 78%;height:420px;margin:0;scroll-snap-align:center;border-radius:16px}
+  .shot img{height:100%;object-fit:cover}
+  .shot:hover img{transform:none}
+  #galerie .swipe{display:block;padding:12px 20px 0;color:var(--mut);font-size:.9rem}
+
+  /* headspa */
+  .spa .wrap{gap:26px;width:100%}
+  .spa .pic{max-width:none;aspect-ratio:4/4.4;border-radius:0}
+  .spa .wrap>div:last-child{padding:0 20px}
+
+  /* reviews: swipe */
+  #stimmen .wrap{width:100%}
+  #stimmen .wrap>*:not(.revs){margin-left:20px;margin-right:20px}
+  .revs{display:flex;columns:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 20px 8px;margin:26px 0 0;scrollbar-width:none}
+  .revs::-webkit-scrollbar{display:none}
+  .rv{flex:0 0 84%;scroll-snap-align:center;margin:0;padding:24px;border-radius:16px}
+  .rv q{font-size:1.2rem}
+  .rv:hover{transform:none;box-shadow:none}
+
+  /* booking */
+  .book{padding:56px 0}
+  .book form{padding:22px 18px;border-radius:20px;gap:16px}
+  .opts span{padding:9px 15px;font-size:.95rem}
+
+  /* visit */
+  .visit{gap:34px;margin-top:28px}
+  .hours li{padding:11px 0}
+  .map{min-height:190px}
+  footer{padding-bottom:120px}
+}
+.swipe{display:none}
