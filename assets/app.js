@@ -25,12 +25,6 @@ const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes(),close=d===6?105
 const dot=$('#dot'),st=$('#statusTxt');
 if(st){if(open)st.textContent='Jetzt geöffnet bis '+(d===6?'17:30':'19:00')+' Uhr';else{dot.classList.add('off');st.textContent='Gerade geschlossen'}}
 const today=$(`#hours li[data-d="${d}"]`);if(today)today.classList.add('today');
-const day=$('#day');if(day)day.min=n.toISOString().slice(0,10);
-const bf=$('#bf');
-if(bf)bf.onsubmit=e=>{e.preventDefault();const f=new FormData(bf);
-  const dt=f.get('day')?new Date(f.get('day')).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'}):'flexibel';
-  const msg=`Hallo Sunny Nails! Ich bin ${f.get('name')} und möchte gern einen Termin für ${f.get('svc')}. Wunschtag: ${dt}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
-  window.open('https://wa.me/491746119584?text='+encodeURIComponent(msg),'_blank','noopener')};
 const mb=$('#loadmap');
 if(mb)mb.onclick=()=>{$('.map').innerHTML='<iframe title="Karte: Sunny Nails & Beauty Spa, Oberdorfstr. 44" referrerpolicy="no-referrer" loading="lazy" src="https://maps.google.com/maps?q=Oberdorfstr.+44,+78054+Villingen-Schwenningen&output=embed"></iframe>'};
 })();
