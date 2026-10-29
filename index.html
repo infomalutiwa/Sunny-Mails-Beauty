@@ -3,161 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sunny Nails & Beauty Spa Villingen-Schwenningen</title>
-<meta name="description" content="Maniküre, Pediküre, Wimpernverlängerung und Headspa in Villingen-Schwenningen. Oberdorfstr. 44. Auch ohne Termin möglich.">
+<title>Website-Vorschau: Starter und Business | Sunny Nails</title>
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#fbf8f3">
-<meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231b1613'/%3E%3Cpath d='M12 42a20 20 0 0 1 40 0z' fill='%23dcc5a6'/%3E%3C/svg%3E">
-<link rel="preload" href="assets/fonts/dmserif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.pick{padding:clamp(40px,6vw,80px) 0}
+.pick h1{font-size:clamp(2.6rem,6vw,4.6rem);margin:12px 0 14px}
+.opt{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.pk{background:#fff;border:1px solid var(--line);border-radius:28px;padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:14px}
+.pk.rec{border:2px solid var(--ink);position:relative}
+.pk .badge{position:absolute;top:-14px;left:28px;background:var(--ink);color:#fff;font-size:.8rem;letter-spacing:.08em;padding:5px 14px;border-radius:999px}
+.pk h2{font-size:2.2rem}
+.pk .price{font:400 3.4rem var(--serif)}.pk .price small{font:400 1rem var(--sans);color:var(--mut)}
+.pk ul{list-style:none;padding:0;display:grid;gap:8px}
+.pk li{display:flex;gap:10px}.pk li::before{content:"✓";color:var(--gold);font-weight:600}
+.pk li.no{color:var(--mut)}.pk li.no::before{content:"–";color:var(--mut)}
+.pk .btn{margin-top:auto}
+@media(max-width:820px){.opt{grid-template-columns:1fr}}
+.note2{margin-top:26px;color:var(--mut);font-size:.95rem}
+</style>
 </head>
 <body>
-<a class="skip" href="#main">Zum Inhalt springen</a>
-<div class="top">Auch ohne Termin möglich · Mo–Sa geöffnet</div>
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Sunny Nails & Beauty Spa, nach oben">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 42a20 20 0 0 1 40 0z" fill="#9b6c47"/><g stroke="#9b6c47" stroke-width="3" stroke-linecap="round"><path d="M32 8v8M12 16l5 6M52 16l-5 6M4 30h8M52 30h8M8 46h48"/></g></svg>
-      Sunny Nails
-    </a>
-    <nav class="links" aria-label="Hauptnavigation"><a href="#leistungen">Leistungen</a><a href="#galerie">Galerie</a><a href="#headspa">Headspa</a><a href="#stimmen">Stimmen</a><a href="#besuch">Besuch</a></nav>
-    <a class="btn btn-dark" href="#termin">Termin buchen</a>
-    <button class="burger" aria-label="Menü" aria-expanded="false">☰</button>
-  </div>
-</header>
-<div class="sheet"><a href="#leistungen">Leistungen</a><a href="#galerie">Galerie</a><a href="#headspa">Headspa</a><a href="#stimmen">Stimmen</a><a href="#besuch">Besuch</a><a href="#termin">Termin buchen</a></div>
-
-<main id="main">
-<section class="hero" id="top">
-  <div class="wrap">
-    <div>
-      <span class="status"><i class="dot" id="dot"></i><span id="statusTxt">Mo–Fr 9–19 Uhr</span></span>
-      <h1>Nägel mit Sonnenschein</h1>
-      <p class="lead">Maniküre, Pediküre, Wimpern und Headspa in Villingen-Schwenningen. Handgemachte Designs von einem Team, das zuhört.</p>
-      <div class="cta"><a class="btn btn-dark" href="#termin">Termin buchen</a><a class="btn btn-line" href="#galerie">Galerie ansehen</a></div>
-      <div class="facts"><span><b>Oberdorfstr. 44</b></span><span>Auch ohne Termin</span><span>Private Räume für Massage</span></div>
-    </div>
-    <div class="collage">
-      <figure class="a"><img src="img/blau.jpg" alt="Pastellblaues French mit 3D-Muster in Mandelform"></figure>
-      <figure class="b"><img src="img/cherry.jpg" alt="Nägel mit Kirschen, Leopardenmuster und Steinen"></figure>
-    </div>
-  </div>
-</section>
-
-<section id="leistungen">
-  <div class="wrap">
-    <h2 class="rv-in">Unsere Leistungen</h2>
-    <p class="lead rv-in">Bring ein Inspirationsbild mit. Wir besprechen Form, Farbe und Design vorab mit dir.</p>
-    <div class="svc-list">
-      <div class="svc"><h3>Maniküre</h3><p>Gel, Aufbau, Auffüllen und Nail Art. French, Ombré, Chrome oder Glitzer in Mandel, Coffin, Stiletto oder Square.</p><a href="#termin">Anfragen</a></div>
-      <div class="svc"><h3>Pediküre</h3><p>Gepflegte Füße mit Fußbad, Hornhautentfernung und Lack oder Gel in deiner Wunschfarbe.</p><a href="#termin">Anfragen</a></div>
-      <div class="svc"><h3>Wasserlose Pediküre</h3><p>Hygienisch und schonend, ganz ohne Fußbad. Ideal, wenn es zwischendurch schnell gehen soll.</p><a href="#termin">Anfragen</a></div>
-      <div class="svc"><h3>Wimpernverlängerung</h3><p>Ein offener Blick vom Aufwachen an. Natürlich oder voluminös, individuell auf dich abgestimmt.</p><a href="#termin">Anfragen</a></div>
-      <div class="svc"><h3>Headspa und Massage</h3><p>Der Beauty-Trend aus Asien: Kopfhaut-Ritual und Entspannung in privaten Räumen.</p><a href="#termin">Anfragen</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="galerie" style="padding-top:0">
-  <div class="wrap">
-    <div class="gal-head">
-      <div><h2 class="rv-in">Aus unserem Studio</h2><p class="lead">Jedes Set ist Handarbeit. Tippe ein Bild an, um es groß zu sehen.</p></div>
-      <a class="btn btn-line" href="https://www.instagram.com/sunnynailsbeauty.vs" target="_blank" rel="noopener noreferrer">Mehr auf Instagram</a>
-    </div>
-    <div class="masonry" id="gal"></div>
-    <p class="swipe">Nach links wischen für mehr</p>
-  </div>
-</section>
-
-<section class="dark spa" id="headspa">
-  <div class="wrap">
-    <div class="pic"><img src="img/creme.jpg" alt="Cremeweiße Nägel mit Glitzer" loading="lazy"></div>
-    <div>
-      <h2 class="rv-in">Ein Studio zum Wohlfühlen</h2>
-      <p class="lead">Nach dem Termin sollst du dich besser fühlen als davor. Genau darauf achten wir.</p>
-      <ul class="ticks">
-        <li><span><strong>Sauber und entspannt.</strong> Hygiene steht bei jeder Behandlung an erster Stelle.</span></li>
-        <li><span><strong>Gute Kommunikation.</strong> Wir hören zu und besprechen dein Design vorab.</span></li>
-        <li><span><strong>Headspa und private Räume.</strong> Abschalten ohne Zuschauer.</span></li>
-        <li><span><strong>Spontan willkommen.</strong> Auch ohne Termin möglich, frag einfach nach.</span></li>
+<main class="pick"><div class="wrap">
+  <span class="status"><i class="dot"></i>Vorschau für Sunny Nails &amp; Beauty Spa</span>
+  <h1>Zwei Pakete, zwei Websites</h1>
+  <p class="lead">Klicken Sie sich durch beide Versionen, am besten auf dem Handy. Dann sehen Sie den Unterschied selbst.</p>
+  <div class="opt">
+    <article class="pk">
+      <h2>Starter</h2>
+      <div class="price">179 € <small>einmalig, zzgl. MwSt.</small></div>
+      <p>Kompakter Einstieg: eine Seite mit den wichtigsten Infos.</p>
+      <ul>
+        <li>Responsives Design für alle Geräte</li>
+        <li>Rückruf-Button (Telefon, WhatsApp)</li>
+        <li>Google-Grundoptimierung</li>
+        <li class="no">Eine Seite, keine Unterseiten</li>
+        <li class="no">Keine Online-Terminbuchung</li>
+        <li class="no">Keine Galerie, Bewertungen oder Karte</li>
       </ul>
-      <a class="btn btn-gold" href="#termin">Termin buchen</a>
-    </div>
+      <a class="btn btn-line" href="starter/">Starter ansehen</a>
+    </article>
+    <article class="pk rec">
+      <span class="badge">EMPFOHLEN</span>
+      <h2>Business</h2>
+      <div class="price">349 € <small>einmalig, zzgl. MwSt.</small></div>
+      <p>Für Betriebe, die online Kunden gewinnen wollen: 8 Seiten, Buchung, starke Optik.</p>
+      <ul>
+        <li>Alles aus Starter</li>
+        <li>Eigene Seite für jede Leistung</li>
+        <li>Erweiterte Suchmaschinenoptimierung</li>
+        <li>Animationen und Vertrauenselemente</li>
+        <li>Online-Terminbuchung mit Anzahlung</li>
+        <li>Galerie, Bewertungen und Karte</li>
+      </ul>
+      <a class="btn btn-dark" href="business/">Business ansehen</a>
+    </article>
   </div>
-</section>
-
-<section id="stimmen">
-  <div class="wrap">
-    <h2 class="rv-in">Das sagen Kundinnen</h2>
-    <p class="lead">Auszüge aus öffentlichen Google-Bewertungen, gekürzt und ohne Fotos. Zur Wahrung der Privatsphäre nennen wir nur Vorname und Initial.</p>
-    <div class="revs" id="revs"></div>
-    <p class="note">Alle Bewertungen findest du bei <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Nails+%26+Beauty+Spa+Oberdorfstr.+44+Villingen-Schwenningen" target="_blank" rel="noopener noreferrer">Google Maps</a>. Wenn du nicht mit Namen genannt werden möchtest, schreib uns kurz, wir nehmen den Auszug umgehend heraus.</p>
-  </div>
-</section>
-
-<section class="book" id="termin">
-  <div class="wrap">
-    <div>
-      <h2 class="rv-in">Termin buchen</h2>
-      <p class="lead">Such dir Leistung, Tag und Uhrzeit aus. Das geht rund um die Uhr, auch sonntags, damit du nicht zu den Öffnungszeiten anrufen musst.</p>
-      <ul class="ticks"><li><span>Auch ohne Termin willkommen, wenn gerade etwas frei ist</span></li><li><span>Bei längeren Behandlungen ab 2 Stunden oder ab 200 € ist eine Anzahlung von 50 % fällig</span></li><li><span>Kostenlos stornieren bis 24 Stunden vor dem Termin</span></li></ul>
-    </div>
-    <form class="bk" id="bk" novalidate>
-      <div class="bk-step"><h3>Leistung</h3><div class="chips" id="bk-svc"></div></div>
-      <div class="bk-step"><h3>Tag <small>Sonntag geschlossen</small></h3><div class="days" id="bk-days"></div></div>
-      <div class="bk-step"><h3>Uhrzeit</h3><div class="slots" id="bk-slots"></div></div>
-      <div class="bk-step"><h3>Deine Angaben</h3>
-        <div class="bk-two">
-          <label>Name<input type="text" name="name" id="bk-name" autocomplete="given-name" placeholder="Vorname genügt"></label>
-          <label>Notiz (optional)<input type="text" name="note" id="bk-note" placeholder="z. B. French, Mandelform"></label>
-        </div>
-        <div class="bk-two" id="bk-contact" hidden style="margin-top:12px">
-          <label>Telefon<input type="text" name="phone" id="bk-phone" autocomplete="tel"></label>
-          <label>E-Mail<input type="text" name="email" id="bk-email" autocomplete="email"></label>
-        </div>
-      </div>
-      <div class="bk-sum" id="bk-sum" aria-live="polite" hidden></div>
-      <label class="chk"><input type="checkbox" id="bk-ok"><span>Ich habe die <a href="agb.html" target="_blank">Buchungs- und Stornobedingungen</a> und die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen.</span></label>
-      <p class="bk-err" id="bk-err" role="alert"></p>
-      <button class="btn btn-dark" type="submit" id="bk-go">Termin per WhatsApp anfragen</button>
-      <p class="hint">Deine Eingaben bleiben im Browser, bis du absendest. Lieber telefonisch: <a href="tel:+4977209898139">+49 7720 9898139</a>.</p>
-    </form>
-  </div>
-</section>
-
-<section id="besuch">
-  <div class="wrap">
-    <h2 class="rv-in">Besuch uns in der Oberdorfstraße</h2>
-    <div class="visit">
-      <div>
-        <h3 style="font-size:1.9rem">Öffnungszeiten</h3>
-        <ul class="hours" id="hours">
-          <li data-d="1"><span>Montag</span><span>9:00 – 19:00</span></li><li data-d="2"><span>Dienstag</span><span>9:00 – 19:00</span></li><li data-d="3"><span>Mittwoch</span><span>9:00 – 19:00</span></li><li data-d="4"><span>Donnerstag</span><span>9:00 – 19:00</span></li><li data-d="5"><span>Freitag</span><span>9:00 – 19:00</span></li><li data-d="6"><span>Samstag</span><span>9:00 – 17:30</span></li><li data-d="0"><span>Sonntag</span><span>Geschlossen</span></li>
-        </ul>
-      </div>
-      <div class="ct">
-        <h3 style="font-size:1.9rem;margin-bottom:8px">So erreichst du uns</h3>
-        <a href="tel:+4977209898139">Telefon +49 7720 9898139</a>
-        <a href="https://wa.me/491746119584" target="_blank" rel="noopener noreferrer">WhatsApp +49 174 611 9584</a>
-        <a href="https://www.instagram.com/sunnynailsbeauty.vs" target="_blank" rel="noopener noreferrer">Instagram @sunnynailsbeauty.vs</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Oberdorfstr.+44+78054+Villingen-Schwenningen" target="_blank" rel="noopener noreferrer">Oberdorfstr. 44, 78054 Villingen-Schwenningen</a>
-        <div class="map"><div><p>Die Karte wird erst nach deinem Klick von Google geladen. Dabei erhält Google deine IP-Adresse (siehe <a href="datenschutz.html#maps" style="text-decoration:underline">Datenschutz</a>).</p><button class="btn btn-line" id="loadmap" type="button">Karte laden</button></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="brand"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 42a20 20 0 0 1 40 0z" fill="#dcc5a6"/><g stroke="#dcc5a6" stroke-width="3" stroke-linecap="round"><path d="M32 8v8M12 16l5 6M52 16l-5 6M4 30h8M52 30h8M8 46h48"/></g></svg>Sunny Nails &amp; Beauty Spa</div>
-  <p>Oberdorfstr. 44 · 78054 Villingen-Schwenningen</p>
-  <div class="fl"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">Buchungsbedingungen</a></div>
-</footer>
-
-<div class="dock"><a href="tel:+4977209898139">Anrufen</a><a href="#termin">Termin buchen</a></div>
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildansicht"><button class="x" aria-label="Schließen">✕</button><button class="p" aria-label="Vorheriges Bild">←</button><img alt=""><button class="n" aria-label="Nächstes Bild">→</button></div>
-<script src="assets/booking-config.js"></script>
-<script src="assets/booking.js"></script>
-<script src="assets/app.js"></script>
+  <p class="note2">Herbstaktion bis 15. November 2026. Preise zzgl. 19 % MwSt.</p>
+</div></main>
 </body>
 </html>

@@ -23,10 +23,18 @@ Hinweis: Die Vorschau zeigt nicht alle Dateien. Neue Fotos und Seiten muss man b
 - Am PC gefällt das helle, foto-getriebene Layout. Auf dem Handy: Foto niedrig halten, damit man Text sieht; Galerie und Bewertungen wischbar.
 - Fotos nicht zuschneiden, sodass die Nägel abgeschnitten werden. Alle Logos auf den Fotos sollen gleich (golden) aussehen.
 
-## Dateien
+## Aufbau (Stand 29.10.2026): zwei Pakete
+- `index.html` (Root): Paketvergleich mit Links zu beiden Vorschauen (noindex).
+- `starter/`: Starter-Paket (179 €), bewusst einfach: eine Seite, Systemschrift, Rückruf-Buttons, 4 Fotos, keine Buchung, keine Bewertungen. Gelbe Demo-Leiste und der gestrichelte Kasten "Das fehlt im Starter-Paket" sind Verkaufshilfen, beim echten Starter entfernen.
+- `business/`: Business-Paket (349 €), 8 Seiten (Start, 5 Leistungen, Galerie, Termin & Kontakt) plus Impressum, Datenschutz, AGB. Mit Animationen, Buchungsmaske, JSON-LD (NailSalon, FAQ, Breadcrumb), Open Graph, `sitemap.xml`, `robots.txt` im Root.
+- Die Business-Seiten werden mit einem Skript erzeugt (nicht im Repo). Leistungstexte sind Entwürfe, nur Fakten von der alten Seite, vom Studio bestätigen lassen. Für Pediküre, Wimpern und Headspa fehlen eigene Fotos (Platzhalter mit Sonnen-Logo).
+- Domain `sunny-mails-beauty.web.app` steht in canonical, og:url, sitemap und robots: bei Domainwechsel ersetzen.
+- Firebase Hosting: Projekt `sunny-mails-beauty`, `firebase.json` im Root.
+
+## Dateien (Stand vor der Aufteilung, jetzt unter `business/`)
 - `index.html`: Startseite (Hero, Leistungen, Galerie, Headspa, Bewertungen, Buchung, Besuch)
 - `assets/style.css`: Gestaltung inkl. Handy-Teil und Buchungs-Widget. Farben als Variablen oben (`--paper`, `--blush`, `--sand`, `--ink`, `--gold`).
-- `assets/app.js`: Menü, Galerie mit Vollbild, Bewertungen, Öffnungszeiten, Karte nach Klick
+- `assets/business.js` und `assets/business.css`: Menü, Animationen, Galerie mit Vollbild, Öffnungszeiten, Karte nach Klick (ersetzen `app.js`)
 - `assets/booking.js`, `assets/booking-config.js`: Buchungsmaske. In der Config stehen Leistungen, Dauer, Preise, Öffnungszeiten, Anzahlungsregel, `api` (leer = Anfrage per WhatsApp).
 - `agb.html` (Buchungs- und Stornobedingungen), `datenschutz.html`, `impressum.html`
 - `img/`: 10 Fotos (nur Fotos mit Sunny-Logo, aus Google-Screenshots ausgeschnitten). `assets/fonts/`: DM Serif Display und Jost, lokal.
