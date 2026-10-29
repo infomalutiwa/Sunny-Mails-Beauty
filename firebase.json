@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "sunny-mails-beauty",
+    "public": ".",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "*.md"]
+  }
+}
