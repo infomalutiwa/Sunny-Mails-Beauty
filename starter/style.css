@@ -18,7 +18,7 @@ p{margin:0 0 12px}
 ul.l{padding-left:20px}
 .photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .photos img{width:100%;height:auto;display:block}
-table{border-collapse:collapse;width:100%;max-width:360px}
+table{border-collapse:collapse;width:100%;max-width:420px}
 td{padding:5px 0;border-bottom:1px solid #eee}
 footer{padding-top:20px;padding-bottom:40px;margin-top:32px;border-top:1px solid #ddd;font-size:14px;color:#666}
 .up{margin:36px 0;padding:20px;background:#f3f0ec;border:2px dashed #b9a48f}

@@ -7,8 +7,9 @@ window.SUNNY_BOOKING={
   deposit:{minPrice:200,minMinutes:120,percent:50},   /* Anzahlung ab 200 € oder ab 2 Stunden */
   cancelHours:24,
   slotStep:30,
-  /* Öffnungszeiten: Wochentag (0 = Sonntag) -> [von, bis] in Stunden. Sonntag geschlossen. */
-  hours:{1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[9,17.5]},
+  /* Öffnungszeiten: Wochentag (0 = Sonntag) -> Liste von [von, bis] in Stunden. Fehlt ein Tag, ist er online nicht buchbar
+     (Mittwoch und Sonntag geschlossen, Samstag nur nach Vereinbarung). */
+  hours:{1:[[8,13]],2:[[8,13],[15,20]],4:[[8,13],[15,20]],5:[[10,16]]},
   /* TODO: Leistungen, Dauer (Minuten) und Preis (€) vom Studio bestätigen lassen.
      price:null = Preis noch nicht hinterlegt, dann entscheidet nur die Dauer über die Anzahlung. */
   services:[

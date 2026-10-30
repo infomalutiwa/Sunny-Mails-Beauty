@@ -24,7 +24,7 @@ async function slotsFor(dateStr,svc){
   }
   const d=new Date(dateStr+'T00:00'),h=C.hours[d.getDay()];if(!h)return [];
   const out=[],now=new Date();
-  for(let m=h[0]*60;m+svc.minutes<=h[1]*60;m+=C.slotStep){
+  for(const r of h)for(let m=r[0]*60;m+svc.minutes<=r[1]*60;m+=C.slotStep){
     const t=new Date(d);t.setMinutes(m);
     if(t>new Date(now.getTime()+60*60000))out.push(fmtT(m));
   }

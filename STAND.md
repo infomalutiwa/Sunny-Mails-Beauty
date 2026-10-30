@@ -8,7 +8,7 @@ Hinweis: Die Vorschau zeigt nicht alle Dateien. Neue Fotos und Seiten muss man b
 ## Das Studio (aus den Fotos und Google-Bewertungen)
 - Sunny Nails & Beauty Spa, Oberdorfstr. 44, 78054 Villingen-Schwenningen
 - Telefon +49 7720 9898139, Mobil/WhatsApp +49 174 611 9584, Instagram @sunnynailsbeauty.vs
-- Mo–Fr 9–19 Uhr, Sa 9–17:30 Uhr, Sonntag geschlossen. Auch ohne Termin möglich. Private Räume für Massage.
+- Mo 8–13, Di und Do 8–13 und 15–20, Mi geschlossen, Fr 10–16, Sa nach Vereinbarung, So geschlossen (Stand 30.10.2026). Auch ohne Termin möglich. Private Räume für Massage.
 - Leistungen: Maniküre, Pediküre, wasserlose Pediküre, Wimpernverlängerung, Headspa und Massage.
 - Logo: goldene halbe Sonne mit Strahlen, "SUNNY NAILS & BEAUTY". Auf der Website ist es ein SVG-Nachbau.
 

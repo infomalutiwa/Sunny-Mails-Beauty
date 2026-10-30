@@ -25,9 +25,12 @@ if(shots.length&&lb){
 }
 
 /* Geöffnet-Anzeige und heutiger Tag */
-const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes(),close=d===6?1050:1140,open=d>=1&&d<=6&&m>=540&&m<close;
+const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes();
+const H={1:[[480,780]],2:[[480,780],[900,1200]],4:[[480,780],[900,1200]],5:[[600,960]]};
+const cur=(H[d]||[]).find(r=>m>=r[0]&&m<r[1]),open=!!cur;
+const hm=x=>Math.floor(x/60)+':'+String(x%60).padStart(2,'0');
 const dot=$('#dot'),st=$('#statusTxt');
-if(st){if(open)st.textContent='Jetzt geöffnet bis '+(d===6?'17:30':'19:00')+' Uhr';else{dot.classList.add('off');st.textContent='Gerade geschlossen'}}
+if(st){if(open)st.textContent='Jetzt geöffnet bis '+hm(cur[1])+' Uhr';else{dot.classList.add('off');st.textContent='Gerade geschlossen'}}
 const today=$(`#hours li[data-d="${d}"]`);if(today)today.classList.add('today');
 
 /* Karte erst nach Klick laden */
