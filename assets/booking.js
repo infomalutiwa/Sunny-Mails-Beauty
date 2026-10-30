@@ -1,4 +1,13 @@
 (()=>{
+/* Anfrage zusätzlich im Studio-Postfach (/mail) speichern; schlägt es fehl, bleibt WhatsApp der Weg */
+const FB={apiKey:'AIzaSyDuomvaRRV4VYJYXDs1qE8J0_81gpjRAAs',authDomain:'sunny-mails-beauty.firebaseapp.com',projectId:'sunny-mails-beauty',appId:'1:680567722635:web:524f2428c35df8c1ddba8e'};
+async function saveRequest(d){
+  try{
+    const V='https://www.gstatic.com/firebasejs/10.12.2/';
+    const [{initializeApp},{getFirestore,collection,addDoc,serverTimestamp}]=await Promise.all([import(V+'firebase-app.js'),import(V+'firebase-firestore.js')]);
+    await addDoc(collection(getFirestore(initializeApp(FB)),'anfragen'),{...d,createdAt:serverTimestamp(),status:'neu'});
+  }catch(e){}
+}
 const C=window.SUNNY_BOOKING,root=document.getElementById('bk');
 if(!C||!root)return;
 const $=(s,r=root)=>r.querySelector(s);
@@ -65,6 +74,7 @@ root.addEventListener('submit',async e=>{
   const when=new Date(st.day+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+', '+st.slot+' Uhr';
   if(!C.api){
     const msg=`Hallo Wohlfühlraum Sunny! Ich bin ${f.get('name')} und möchte gern einen Termin: ${st.svc.name}, ${when}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
+    saveRequest({name:f.get('name'),phone:f.get('phone')||'',email:f.get('email')||'',service:st.svc.name,when,note:f.get('note')||''});
     window.open('https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');return;
   }
   if(!f.get('phone')&&!f.get('email')){err.textContent='Bitte gib Telefon oder E-Mail für die Bestätigung an.';return}

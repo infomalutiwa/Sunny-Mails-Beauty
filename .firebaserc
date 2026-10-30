@@ -1,1 +1,7 @@
-{ "projects": { "default": "sunny-mails-beauty" } }
+{
+  "projects": {
+    "default": "sunny-mails-beauty"
+  },
+  "targets": {},
+  "etags": {}
+}

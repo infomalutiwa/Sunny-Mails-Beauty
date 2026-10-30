@@ -2,6 +2,22 @@
   "hosting": {
     "site": "sunny-mails-beauty",
     "public": ".",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "*.md"]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "*.md"
+    ]
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "eur3",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true
+    }
   }
 }
