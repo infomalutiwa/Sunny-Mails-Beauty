@@ -69,3 +69,6 @@ Danach: Link oder Widget-Code in `booking-config.js` bzw. in `index.html` einbau
 
 ## Name (30.10.2026)
 Studioname auf den Seiten jetzt "Wohlfühlraum Sonny" (vorher Sunny Nails & Beauty Spa). Unverändert: Google-Bewertungstexte (Originalzitate), Instagram-Handle, Domain, Logo in den Fotos.
+
+## Logos (30.10.2026)
+Fotos und Logo stammten von einem anderen Geschäft. Alle 10 Fotos in `img/`: altes Sunny-Logo weichgezeichnet und mit Platzhalter "LOGO-MUSTER" überdeckt (Originale in Git-Verlauf). Seiten-Logo: neutrales Monogramm "W" statt Sonne. Vor Livegang eigene Fotos und echtes Logo einsetzen.
