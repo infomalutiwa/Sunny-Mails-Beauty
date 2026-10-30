@@ -4,7 +4,7 @@ if(!C||!root)return;
 const $=(s,r=root)=>r.querySelector(s);
 const st={svc:null,day:null,slot:null};
 const fmtDur=m=>{const h=Math.floor(m/60),r=m%60;return (h?h+' Std.':'')+(h&&r?' ':'')+(r?r+' Min.':'')};
-const needsDeposit=s=>s&&((s.price!=null&&s.price>=C.deposit.minPrice)||s.minutes>=C.deposit.minMinutes);
+const needsDeposit=s=>C.deposit&&s&&((s.price!=null&&s.price>=C.deposit.minPrice)||s.minutes>=C.deposit.minMinutes);
 const fmtT=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
 const pad=n=>String(n).padStart(2,'0');
 const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
@@ -36,7 +36,7 @@ async function renderSlots(){
   box.innerHTML='<p class="none">Lade freie Zeiten …</p>';
   try{const s=await slotsFor(st.day,st.svc);
     box.innerHTML=s.length?s.map(t=>`<button type="button" class="slot" data-t="${t}" aria-pressed="false">${t}</button>`).join(''):'<p class="none">An diesem Tag ist nichts mehr frei. Bitte wähle einen anderen Tag.</p>';
-  }catch(e){box.innerHTML='<p class="none">Die freien Zeiten konnten nicht geladen werden. Bitte ruf uns kurz an: +49 7720 9898139.</p>'}
+  }catch(e){box.innerHTML='<p class="none">Die freien Zeiten konnten nicht geladen werden. Bitte ruf uns kurz an: 0173 3098632.</p>'}
   update();
 }
 function update(){
@@ -47,7 +47,7 @@ function update(){
   const when=st.day?new Date(st.day+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+(st.slot?', '+st.slot+' Uhr':''):'noch offen';
   let depTxt='Keine Anzahlung nötig.';
   if(dep)depTxt=s.price!=null?`${C.deposit.percent} % Anzahlung: <b>${(s.price*C.deposit.percent/100).toFixed(2).replace('.',',')} €</b>`:`<b>${C.deposit.percent} % Anzahlung</b> des Behandlungspreises`;
-  sum.innerHTML=`<div><span>Leistung</span><span>${s.name}</span></div><div><span>Dauer</span><span>ca. ${fmtDur(s.minutes)}</span></div><div><span>Termin</span><span>${when}</span></div><div class="dep"><span>Anzahlung</span><span>${depTxt}</span></div><p style="font-size:.86rem;color:var(--mut)">${dep?`Die Anzahlung wird auf den Preis angerechnet. Bei Absage weniger als ${C.cancelHours} Stunden vorher behalten wir sie als Ausfallentschädigung ein.`:`Bitte sag bis ${C.cancelHours} Stunden vorher ab, wenn du nicht kommen kannst.`}</p>`;
+  sum.innerHTML=`<div><span>Leistung</span><span>${s.name}</span></div><div><span>Dauer</span><span>ca. ${fmtDur(s.minutes)}</span></div><div><span>Termin</span><span>${when}</span></div>${s.price!=null?`<div><span>Preis</span><span>${s.price} €</span></div>`:''}${C.deposit?`<div class="dep"><span>Anzahlung</span><span>${depTxt}</span></div>`:''}<p style="font-size:.86rem;color:var(--mut)">Bitte sag rechtzeitig ab, wenn du nicht kommen kannst.</p>`;
   $('#bk-go').textContent=C.api?(dep?'Verbindlich buchen und Anzahlung zahlen':'Verbindlich buchen'):'Termin per WhatsApp anfragen';
   $('#bk-contact').hidden=!C.api;
 }
@@ -61,10 +61,10 @@ root.addEventListener('submit',async e=>{
   e.preventDefault();const err=$('#bk-err'),f=new FormData(root);err.textContent='';
   if(!st.svc||!st.day||!st.slot){err.textContent='Bitte wähle Leistung, Tag und Uhrzeit.';return}
   if(!f.get('name')){err.textContent='Bitte gib deinen Namen an.';return}
-  if(!$('#bk-ok').checked){err.textContent='Bitte bestätige die Buchungs- und Stornobedingungen.';return}
+  if(!$('#bk-ok').checked){err.textContent='Bitte bestätige die Datenschutzerklärung.';return}
   const when=new Date(st.day+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+', '+st.slot+' Uhr';
   if(!C.api){
-    const msg=`Hallo Wohlfühlraum Sonny! Ich bin ${f.get('name')} und möchte gern einen Termin: ${st.svc.name}, ${when}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
+    const msg=`Hallo Wohlfühlraum Sunny! Ich bin ${f.get('name')} und möchte gern einen Termin: ${st.svc.name}, ${when}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
     window.open('https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');return;
   }
   if(!f.get('phone')&&!f.get('email')){err.textContent='Bitte gib Telefon oder E-Mail für die Bestätigung an.';return}
@@ -72,7 +72,7 @@ root.addEventListener('submit',async e=>{
     const r=await fetch(C.api+'/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service:st.svc.id,date:st.day,time:st.slot,name:f.get('name'),phone:f.get('phone'),email:f.get('email'),note:f.get('note'),termsAccepted:true})});
     if(!r.ok)throw new Error();const j=await r.json();
     if(j.checkoutUrl)location.href=j.checkoutUrl;else $('#bk-err').textContent='Gebucht. Du bekommst gleich eine Bestätigung.';
-  }catch(x){err.textContent='Das hat nicht geklappt. Bitte versuche es erneut oder ruf uns an: +49 7720 9898139.'}
+  }catch(x){err.textContent='Das hat nicht geklappt. Bitte versuche es erneut oder ruf uns an: 0173 3098632.'}
 });
 update();renderSlots();
 })();
