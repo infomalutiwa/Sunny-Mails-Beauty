@@ -66,3 +66,6 @@ Danach: Link oder Widget-Code in `booking-config.js` bzw. in `index.html` einbau
 
 ## Einstiegs-Prompt für den neuen Chat
 "Lies STAND.md und BUCHUNG-SETUP.md im Repo infomalutiwa/Sunny-Mails-Beauty (Branch ccr-2ec575da-frrsfm) und mach bei den offenen Aufgaben weiter."
+
+## Name (30.10.2026)
+Studioname auf den Seiten jetzt "Wohlfühlraum Sonny" (vorher Sunny Nails & Beauty Spa). Unverändert: Google-Bewertungstexte (Originalzitate), Instagram-Handle, Domain, Logo in den Fotos.

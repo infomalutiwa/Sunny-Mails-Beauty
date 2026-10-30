@@ -32,5 +32,5 @@ const today=$(`#hours li[data-d="${d}"]`);if(today)today.classList.add('today');
 
 /* Karte erst nach Klick laden */
 const mb=$('#loadmap');
-if(mb)mb.onclick=()=>{$('.map').innerHTML='<iframe title="Karte: Sunny Nails & Beauty Spa, Oberdorfstr. 44" referrerpolicy="no-referrer" loading="lazy" src="https://maps.google.com/maps?q=Oberdorfstr.+44,+78054+Villingen-Schwenningen&output=embed"></iframe>'};
+if(mb)mb.onclick=()=>{$('.map').innerHTML='<iframe title="Karte: Wohlfühlraum Sonny, Oberdorfstr. 44" referrerpolicy="no-referrer" loading="lazy" src="https://maps.google.com/maps?q=Oberdorfstr.+44,+78054+Villingen-Schwenningen&output=embed"></iframe>'};
 })();

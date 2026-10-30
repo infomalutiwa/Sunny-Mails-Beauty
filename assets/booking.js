@@ -64,7 +64,7 @@ root.addEventListener('submit',async e=>{
   if(!$('#bk-ok').checked){err.textContent='Bitte bestätige die Buchungs- und Stornobedingungen.';return}
   const when=new Date(st.day+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+', '+st.slot+' Uhr';
   if(!C.api){
-    const msg=`Hallo Sunny Nails! Ich bin ${f.get('name')} und möchte gern einen Termin: ${st.svc.name}, ${when}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
+    const msg=`Hallo Wohlfühlraum Sonny! Ich bin ${f.get('name')} und möchte gern einen Termin: ${st.svc.name}, ${when}.${f.get('note')?' Notiz: '+f.get('note'):''}`;
     window.open('https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');return;
   }
   if(!f.get('phone')&&!f.get('email')){err.textContent='Bitte gib Telefon oder E-Mail für die Bestätigung an.';return}
