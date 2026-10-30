@@ -16,7 +16,11 @@
 .pk.rec{border:2px solid var(--ink);position:relative}
 .pk .badge{position:absolute;top:-14px;left:28px;background:var(--ink);color:#fff;font-size:.8rem;letter-spacing:.08em;padding:5px 14px;border-radius:999px}
 .pk h2{font-size:2.2rem}
-.pk .price{font:400 3.4rem var(--serif)}.pk .price small{font:400 1rem var(--sans);color:var(--mut)}
+.pk .was{color:var(--mut);font-size:1.2rem;text-decoration:line-through;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pk .off{text-decoration:none;background:#2e7d4f;color:#fff;font-size:.8rem;letter-spacing:.06em;padding:4px 12px;border-radius:999px}
+.pk .price{font:400 3.4rem/1 var(--serif)}.pk .price small{font:400 1rem var(--sans);color:var(--mut)}
+.pk .save{color:#2e7d4f;font-weight:500;font-size:.95rem;margin-top:-6px}
+.pk .abo{border-top:1px solid var(--line);padding-top:14px;color:var(--mut);font-size:.95rem}.pk .abo b{color:var(--ink);font-size:1.15rem}
 .pk ul{list-style:none;padding:0;display:grid;gap:8px}
 .pk li{display:flex;gap:10px}.pk li::before{content:"✓";color:var(--gold);font-weight:600}
 .pk li.no{color:var(--mut)}.pk li.no::before{content:"–";color:var(--mut)}
@@ -33,7 +37,10 @@
   <div class="opt">
     <article class="pk">
       <h2>Starter</h2>
-      <div class="price">179 € <small>einmalig, zzgl. MwSt.</small></div>
+      <div class="was"><span>179 €</span><span class="off">−30 % NEUKUNDEN</span></div>
+      <div class="price">125,30 € <small>einmalig</small></div>
+      <div class="save">Du sparst 53,70 €</div>
+      <div class="abo"><b>+ 19 € / Monat</b> Abo für Hosting und Betreuung</div>
       <p>Kompakter Einstieg: eine Seite mit den wichtigsten Infos.</p>
       <ul>
         <li>Responsives Design für alle Geräte</li>
@@ -48,7 +55,10 @@
     <article class="pk rec">
       <span class="badge">EMPFOHLEN</span>
       <h2>Business</h2>
-      <div class="price">349 € <small>einmalig, zzgl. MwSt.</small></div>
+      <div class="was"><span>349 €</span><span class="off">−30 % NEUKUNDEN</span></div>
+      <div class="price">244,30 € <small>einmalig</small></div>
+      <div class="save">Du sparst 104,70 €</div>
+      <div class="abo"><b>+ 19 € / Monat</b> Abo für Hosting und Betreuung</div>
       <p>Für Betriebe, die online Kunden gewinnen wollen: 8 Seiten, Buchung, starke Optik.</p>
       <ul>
         <li>Alles aus Starter</li>
@@ -61,7 +71,7 @@
       <a class="btn btn-dark" href="business/">Business ansehen</a>
     </article>
   </div>
-  <p class="note2">Herbstaktion bis 15. November 2026. Preise zzgl. 19 % MwSt.</p>
+  <p class="note2">30 % Neukundenrabatt bei Bestellung bis 15. November 2026. Alle Preise sind Endpreise, es wird keine Umsatzsteuer berechnet.</p>
 </div></main>
 </body>
 </html>
