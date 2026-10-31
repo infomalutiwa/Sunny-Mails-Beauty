@@ -1,11 +1,12 @@
 @font-face{font-family:'DM Serif Display';src:url(fonts/dmserif.woff2) format('woff2');font-style:normal;font-display:swap}
 @font-face{font-family:'DM Serif Display';src:url(fonts/dmserif-italic.woff2) format('woff2');font-style:italic;font-display:swap}
-@font-face{font-family:'Jost';src:url(fonts/jost.woff2) format('woff2');font-weight:400 600;font-display:swap}
+@font-face{font-family:'Raleway';src:url(fonts/raleway.woff2) format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Cormorant Garamond';src:url(fonts/cormorant.woff2) format('woff2');font-weight:400 600;font-display:swap}
 :root{--paper:#fdfbf8;--blush:#f8f2ea;--sand:#f3ebe0;--ink:#4a3b31;--mut:#7a6556;--gold:#94703f;--gold-l:#eadcc6;--line:rgba(74,59,49,.13);
-  --serif:'DM Serif Display',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+  --serif:'DM Serif Display',Georgia,serif;--sans:'Raleway',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
@@ -312,3 +313,30 @@ footer .brand{color:var(--ink)}
   background:linear-gradient(rgba(251,248,243,.62),rgba(251,248,243,.62)),url(../img/marmor.jpg) center/cover;
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent)}
 .dark .pic,.spa .pic{border-radius:999px 999px 14px 14px}
+
+/* Logo */
+.brand .sun{width:auto;height:34px;max-width:none}
+.brand{gap:12px}
+.brand .bn{font-size:1.35rem;letter-spacing:.01em}
+.flogo{display:block;margin:0 auto 18px;width:min(260px,70%);height:auto}
+@media(max-width:760px){.brand .sun{height:28px}.brand .bn{font-size:1.15rem}}
+
+/* Handy */
+@media(max-width:760px){
+  .hero2{padding:56px 0 150px;min-height:calc(100svh - 62px)}
+  .hero2 .btn-ghost{display:none}
+  .hero2 .status{font-size:.8rem;padding:6px 14px}
+  .hero2 .over{margin:22px 0 4px;letter-spacing:.2em;font-size:.68rem}
+  .hero2 h1{font-size:3.2rem;margin-bottom:14px}
+  .hero2 .lead{font-size:1.02rem}
+  .hero2 .cta{margin-top:24px}
+  .dock{gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+  .dock a{padding:12px 8px;font-size:.95rem;min-width:0}
+}
+
+/* Marken-Schriften: Raleway + Seasons-ähnliche Serife */
+.brand .bn{display:flex;flex-direction:column;align-items:flex-start;line-height:1;font:inherit}
+.brand .bn i{font:300 .6rem var(--sans);font-style:normal;letter-spacing:.46em;text-transform:uppercase;color:#a9884f;margin:0 0 4px .1em}
+.brand .bn b{font:500 1.55rem/1 'Cormorant Garamond',Georgia,serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);padding-left:.05em}
+@media(max-width:760px){.brand .bn i{font-size:.52rem}.brand .bn b{font-size:1.3rem}}
+.btn,.links,.over,.infobar .wrap{font-family:var(--sans)}

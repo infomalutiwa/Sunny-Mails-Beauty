@@ -1,11 +1,11 @@
-# Wohlfühlraum Sunny: Stand der Website
+# Wohlfühlort Sunny: Stand der Website
 
 Zum Weitermachen in einem neuen Chat: diese Datei zuerst lesen.
 Repo: `infomalutiwa/Sunny-Mails-Beauty`, Branch `ccr-2ec575da-frrsfm` (Stand 31.10.2026). Kein Pull Request angelegt.
 Vorschau (Firebase Hosting, Projekt `sunny-mails-beauty`): https://sunny-mails-beauty.web.app/
 
 ## Das Studio (aus den Instagram-Screenshots der Inhaberin)
-- Wohlfühlraum Sunny, "Dein Ort zum Aufblühen", Kosmetik · Nails · Fußpflege. Neueröffnung 01.11.2025.
+- Wohlfühlort Sunny, "Dein Ort zum Aufblühen", Kosmetik · Nails · Fußpflege. Neueröffnung 01.11.2025.
 - Müßmattstraße 22, 79618 Rheinfelden (Baden). Telefon/WhatsApp 0173 3098632. Instagram @wohlfuehlraum_sunny.
 - Zeiten: Mo 8–13, Di und Do 8–13 und 15–20, Mi geschlossen, Fr 10–16, Sa nach Vereinbarung, So geschlossen.
 - Preise (aus den Preislisten): Maniküre 35–60 €, Zusätze +5 €, Schmucknagel 3 €. Pediküre 43–48 €, Wohlfühlbehandlung 69 €.

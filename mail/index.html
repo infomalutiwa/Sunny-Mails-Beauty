@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Termine – Wohlfühlraum Sunny</title>
+<title>Termine – Wohlfühlort Sunny</title>
 <style>
 :root{--ink:#3b2a20;--mut:#8a7769;--gold:#b98a4e;--gold-l:#d9b57c;--sand:#efe3d3;--blush:#f4e4dc;--bg:#fbf8f3;--line:#eadfd1;--ok:#4f8a5b}
 *{box-sizing:border-box;margin:0}
@@ -97,7 +97,7 @@ aside.glass{flex-direction:row;overflow-x:auto;padding:10px;align-items:center}a
   <form id="lcard" class="glass" autocomplete="on">
     <div class="logo">W</div>
     <h1 class="serif">Postfach</h1>
-    <p>Anfragen von Wohlfühlraum Sunny. Nur für das Studio.</p>
+    <p>Anfragen von Wohlfühlort Sunny. Nur für das Studio.</p>
     <label for="em">E-Mail</label><input id="em" type="email" autocomplete="username" required>
     <label for="pw">Passwort</label><input id="pw" type="password" autocomplete="current-password" minlength="8" required>
     <button class="btn wide" id="go" type="submit">Anmelden</button>
@@ -109,7 +109,7 @@ aside.glass{flex-direction:row;overflow-x:auto;padding:10px;align-items:center}a
 
 <main id="app" class="hide">
   <aside class="glass">
-    <div class="brand"><div class="logo">W</div><div><b>Wohlfühlraum Sunny</b><small>Postfach</small></div></div>
+    <div class="brand"><div class="logo">W</div><div><b>Wohlfühlort Sunny</b><small>Postfach</small></div></div>
     <button class="nav on" data-f="termine">Termine <i id="n-termine"></i></button>
     <button class="nav" data-f="inbox">Anfragen <i id="n-inbox"></i></button>
     <button class="nav" data-f="unread">Ungelesen <i id="n-unread"></i></button>
@@ -186,7 +186,7 @@ function openT(id){
   const b=bk.find(x=>x.id===id);if(!b)return;sel=id;
   const tel=(b.phone||'').replace(/[^\d+]/g,''),wa=tel?tel.replace(/^00/,'').replace(/^0/,'49').replace(/^\+/,''):'';
   const when=new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+', '+hm(b.start)+'–'+hm(b.end)+' Uhr';
-  const text=encodeURIComponent(`Hallo ${b.name}, dein Termin im Wohlfühlraum Sunny: ${when}. Wir freuen uns auf dich!`);
+  const text=encodeURIComponent(`Hallo ${b.name}, dein Termin im Wohlfühlort Sunny: ${when}. Wir freuen uns auf dich!`);
   $('#view').classList.remove('closed');
   $('#view').innerHTML=`<div class="mail"><button class="btn ghost back" id="bk">← Zurück</button><span class="tag">${b.status==='blockiert'?'Blockiert':'Gebucht'}</span><h2 class="serif">${esc(b.status==='blockiert'?(b.name||'Gesperrt'):b.name)}</h2><div class="meta">${esc(when)}${b.createdAt?' · gebucht '+esc(full(b.createdAt)):''}</div>
   <dl>${b.status==='blockiert'?'':`<dt>Leistungen</dt><dd>${esc((b.services||[]).join('\n'))}</dd><dt>Dauer</dt><dd>${b.minutes} Min.</dd><dt>Preis</dt><dd>${b.price!=null?b.price+' €':'nach Behandlung'}</dd><dt>Telefon</dt><dd>${esc(b.phone)||'–'}</dd><dt>E-Mail</dt><dd>${esc(b.email)||'–'}</dd><dt>Notiz</dt><dd>${esc(b.note)||'–'}</dd>`}</dl>
@@ -219,10 +219,10 @@ const ntfState=()=>{if(!('Notification' in window)){ntfBtn.classList.add('hide')
 ntfBtn.onclick=async()=>{await Notification.requestPermission();ntfState()};ntfState();
 function ping(b){
   const txt=`${new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short'})}, ${hm(b.start)} Uhr: ${(b.services||[]).join(', ')}`;
-  document.title='(Neu) Termine – Wohlfühlraum Sunny';
+  document.title='(Neu) Termine – Wohlfühlort Sunny';
   if('Notification' in window&&Notification.permission==='granted'){try{new Notification('Neuer Termin: '+b.name,{body:txt,tag:b.id})}catch(e){}}
 }
-addEventListener('focus',()=>{document.title='Termine – Wohlfühlraum Sunny'});
+addEventListener('focus',()=>{document.title='Termine – Wohlfühlort Sunny'});
 
 function open(id){
   const m=all.find(x=>x.id===id);if(!m)return;sel=id;
@@ -232,7 +232,7 @@ function open(id){
   $('#view').classList.remove('closed');
   $('#view').innerHTML=`<div class="mail"><button class="btn ghost back" id="bk">← Zurück</button><span class="tag">${m.status==='archiv'?'Archiviert':'Terminanfrage'}</span><h2 class="serif">${esc(m.name)}</h2><div class="meta">${esc(full(m.createdAt))}</div>
   <dl><dt>Leistung</dt><dd>${esc(m.service)}</dd><dt>Wunschtermin</dt><dd>${esc(m.when)}</dd><dt>Telefon</dt><dd>${esc(m.phone)||'–'}</dd><dt>E-Mail</dt><dd>${esc(m.email)||'–'}</dd><dt>Notiz</dt><dd>${esc(m.note)||'–'}</dd></dl>
-  <div class="act">${wa?`<a class="btn" target="_blank" rel="noopener" href="https://wa.me/${wa}?text=${text}">Per WhatsApp antworten</a>`:''}${m.email?`<a class="btn ${wa?'ghost':''}" href="mailto:${encodeURIComponent(m.email)}?subject=${encodeURIComponent('Dein Termin im Wohlfühlraum Sunny')}&body=${text}">Per E-Mail antworten</a>`:''}${tel?`<a class="btn ghost" href="tel:${tel}">Anrufen</a>`:''}
+  <div class="act">${wa?`<a class="btn" target="_blank" rel="noopener" href="https://wa.me/${wa}?text=${text}">Per WhatsApp antworten</a>`:''}${m.email?`<a class="btn ${wa?'ghost':''}" href="mailto:${encodeURIComponent(m.email)}?subject=${encodeURIComponent('Dein Termin im Wohlfühlort Sunny')}&body=${text}">Per E-Mail antworten</a>`:''}${tel?`<a class="btn ghost" href="tel:${tel}">Anrufen</a>`:''}
   <button class="btn ghost" id="arc">${m.status==='archiv'?'Zurück in Posteingang':'Archivieren'}</button><button class="btn ghost" id="del">Löschen</button></div></div>`;
   $('#arc').onclick=()=>F.updateDoc(F.doc(db,'anfragen',id),{status:m.status==='archiv'?'gelesen':'archiv'});
   $('#del').onclick=()=>{if(confirm('Anfrage endgültig löschen?'))F.deleteDoc(F.doc(db,'anfragen',id))};

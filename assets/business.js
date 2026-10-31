@@ -35,5 +35,5 @@ const today=$(`#hours li[data-d="${d}"]`);if(today)today.classList.add('today');
 
 /* Karte erst nach Klick laden */
 const mb=$('#loadmap');
-if(mb)mb.onclick=()=>{$('.map').innerHTML='<iframe title="Karte: Wohlfühlraum Sunny, Müßmattstraße 22" referrerpolicy="no-referrer" loading="lazy" src="https://maps.google.com/maps?q=M%C3%BC%C3%9Fmattstra%C3%9Fe+22,+79618+Rheinfelden+(Baden)&output=embed"></iframe>'};
+if(mb)mb.onclick=()=>{$('.map').innerHTML='<iframe title="Karte: Wohlfühlort Sunny, Müßmattstraße 22" referrerpolicy="no-referrer" loading="lazy" src="https://maps.google.com/maps?q=M%C3%BC%C3%9Fmattstra%C3%9Fe+22,+79618+Rheinfelden+(Baden)&output=embed"></iframe>'};
 })();

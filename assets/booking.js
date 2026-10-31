@@ -89,7 +89,7 @@ function ics(b){
   const dt=(date,min)=>date.replace(/-/g,'')+'T'+pad(Math.floor(min/60))+pad(min%60)+'00';
   const txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Wohlfuehlraum Sunny//DE','BEGIN:VEVENT','UID:'+b.id+'@sunny-mails-beauty.web.app',
     'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;TZID=Europe/Berlin:'+dt(b.date,b.start),'DTEND;TZID=Europe/Berlin:'+dt(b.date,b.end),
-    'SUMMARY:Wohlfühlraum Sunny: '+b.services.join(', '),'LOCATION:Müßmattstraße 22\\, 79618 Rheinfelden (Baden)','DESCRIPTION:Absage bitte telefonisch: 0173 3098632','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    'SUMMARY:Wohlfühlort Sunny: '+b.services.join(', '),'LOCATION:Müßmattstraße 22\\, 79618 Rheinfelden (Baden)','DESCRIPTION:Absage bitte telefonisch: 0173 3098632','END:VEVENT','END:VCALENDAR'].join('\r\n');
   return URL.createObjectURL(new Blob([txt],{type:'text/calendar'}));
 }
 function done(b){
@@ -109,7 +109,7 @@ root.addEventListener('submit',async e=>{
   if(!$('#bk-ok').checked){err.textContent='Bitte bestätige die Datenschutzerklärung.';return}
   const names=st.svcs.map(s=>s.name),when=longDay(st.day)+', '+st.slot+' Uhr';
   if(!DIRECT&&!C.api){
-    const msg=`Hallo Wohlfühlraum Sunny! Ich bin ${name} und möchte gern einen Termin: ${names.join(', ')}, ${when}.${note?' Notiz: '+note:''}`;
+    const msg=`Hallo Wohlfühlort Sunny! Ich bin ${name} und möchte gern einen Termin: ${names.join(', ')}, ${when}.${note?' Notiz: '+note:''}`;
     window.open('https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');return;
   }
   const go=$('#bk-go');go.disabled=true;go.textContent='Wird gebucht …';
