@@ -360,5 +360,5 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 /* Credit in der Fußzeile */
 footer .credit{margin:26px auto 0;padding-top:18px;border-top:1px solid var(--line);max-width:280px;font:italic 400 1.05rem var(--serif);color:var(--mut)}
 footer .credit span{color:var(--gold)}
-footer .credit .mw{font-style:normal;font:500 .78rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);border-bottom:1px solid var(--gold-l);padding-bottom:1px;margin-left:2px}
-footer .credit .mw:hover{color:var(--ink);border-color:var(--gold)}
+footer .credit a.mw{font-style:normal;font:500 .78rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);border-bottom:1px solid var(--gold-l);padding-bottom:1px;margin-left:2px}
+footer .credit a.mw:hover{color:var(--ink);border-color:var(--gold)}
