@@ -312,7 +312,7 @@ footer .brand{color:var(--ink)}
 .dark::before,.cta-band::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(rgba(253,251,247,.6),rgba(253,251,247,.6)),url(../img/marmor.jpg) center/cover;
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent)}
-.dark .pic,.spa .pic{border-radius:999px 999px 14px 14px}
+.dark .pic,.spa .pic{border-radius:22px}
 
 /* Logo */
 .brand .sun{width:auto;height:34px;max-width:none}

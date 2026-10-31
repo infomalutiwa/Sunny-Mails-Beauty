@@ -156,13 +156,13 @@ footer .fl{flex-wrap:wrap;gap:8px 22px;padding:0 20px}
 .cards.c4{grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,38px);align-items:start;margin-top:56px}
 .cards.c4 .card{background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;text-align:center}
 .cards.c4 .card:hover{transform:none;box-shadow:none}
-.cards.c4 .card:nth-child(even){margin-top:56px}
-.cards.c4 .card .pic{aspect-ratio:3/4;border-radius:999px 999px 14px 14px;box-shadow:0 30px 50px -34px rgba(46,42,39,.55)}
+
+.cards.c4 .card .pic{aspect-ratio:6/7;border-radius:22px;box-shadow:0 30px 50px -34px rgba(46,42,39,.55)}
 .cards.c4 .card .body{padding:22px 6px 0;align-items:center}
 .cards.c4 .card h3{font-size:2rem}
 .cards.c4 .card .more{padding-top:4px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
 @media(max-width:1100px){.cards.c4{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.cards.c4{grid-template-columns:1fr 1fr;gap:14px}.cards.c4 .card h3{font-size:1.45rem}.cards.c4 .card p{display:none}.cards.c4 .card:nth-child(even){margin-top:34px}}
+@media(max-width:620px){.cards.c4{grid-template-columns:1fr 1fr;gap:14px}.cards.c4 .card h3{font-size:1.45rem}.cards.c4 .card p{display:none}}
 .cta-band .cta{justify-content:center}
 .phero .vis{box-shadow:0 0 0 10px rgba(255,255,255,.6),0 0 0 11px rgba(169,136,79,.55)}
 
