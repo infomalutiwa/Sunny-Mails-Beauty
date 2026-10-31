@@ -349,3 +349,5 @@ footer .brand{color:var(--ink)}
 .dot{background:#7E9B7A}
 .btn-line,.btn-ghost{border-width:1px}
 .card .pic,.cards.c4 .card .pic{box-shadow:0 30px 50px -34px rgba(46,42,39,.5)}
+html,body{overflow-x:clip}
+@media(max-width:760px){.phero .vis{box-shadow:0 0 0 5px rgba(253,251,247,.7),0 0 0 6px rgba(200,169,126,.6)}}
