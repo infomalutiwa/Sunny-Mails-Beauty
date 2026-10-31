@@ -351,3 +351,8 @@ footer .brand{color:var(--ink)}
 .card .pic,.cards.c4 .card .pic{box-shadow:0 30px 50px -34px rgba(46,42,39,.5)}
 html,body{overflow-x:clip}
 @media(max-width:760px){.phero .vis{box-shadow:0 0 0 5px rgba(253,251,247,.7),0 0 0 6px rgba(200,169,126,.6)}}
+
+/* Kein blaues Antipp-/Markier-Highlight auf Knöpfen und Links */
+a,button,.btn,.chip,.day,.slot,.dock a,summary,label,[role=button]{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+a,button,.btn,.chip,.day,.slot,.dock a,summary,.burger{-webkit-user-select:none;user-select:none}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
