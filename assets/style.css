@@ -2,7 +2,7 @@
 @font-face{font-family:'DM Serif Display';src:url(fonts/dmserif-italic.woff2) format('woff2');font-style:italic;font-display:swap}
 @font-face{font-family:'Raleway';src:url(fonts/raleway.woff2) format('woff2');font-weight:300 700;font-display:swap}
 @font-face{font-family:'Cormorant Garamond';src:url(fonts/cormorant.woff2) format('woff2');font-weight:400 600;font-display:swap}
-:root{--paper:#FDFBF7;--blush:#F3EFEA;--sand:#F3EFEA;--ink:#2E2A27;--mut:#6B6058;--gold:#B89355;--gold-l:#C8A97E;--sage:#D8DFD5;--line:rgba(46,42,39,.12);
+:root{--paper:#FDFBF7;--blush:#F3EFEA;--sand:#F3EFEA;--ink:#2E2A27;--mut:#6B6058;--gold:#B89355;--gold-l:#C8A97E;--sage:#EFE6D8;--line:rgba(46,42,39,.12);
   --serif:'DM Serif Display',Georgia,serif;--sans:'Raleway',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -341,9 +341,9 @@ footer .brand{color:var(--ink)}
 @media(max-width:760px){.brand .bn i{font-size:.52rem}.brand .bn b{font-size:1.3rem}}
 .btn,.links,.over,.infobar .wrap{font-family:var(--sans)}
 
-/* Salbei-Akzent (dezent) */
-.infobar{background:#E8ECE5;border-bottom-color:rgba(216,223,213,.9)}
-.book{background:linear-gradient(#EEF1EB,#E6EAE1)}
+/* Helles Beige statt Salbei */
+.infobar{background:#F2EBDF;border-bottom-color:rgba(200,169,126,.35)}
+.book{background:linear-gradient(#F6F0E6,#EEE5D6)}
 .dark::before,.cta-band::before{background:linear-gradient(rgba(253,251,247,.5),rgba(253,251,247,.5)),url(../img/marmor.jpg) center/cover}
 .top{background:var(--sage);color:#4a463f}
 .dot{background:#7E9B7A}
