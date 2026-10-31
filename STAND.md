@@ -13,11 +13,9 @@ Vorschau (Firebase Hosting, Projekt `sunny-mails-beauty`): https://sunny-mails-b
 - Design (31.10.): Vollbild-Wellness-Hero (`img/hero.jpg`), Champagner-Gold (Verlauf, dunkle Schrift auf Gold-Buttons), kräftige Serife mit kursiven Akzenten, Leistungen als versetzte Bogen-Bilder, Marmor nur noch weich ausgeblendet im Studio-Bereich und CTA-Band, ruhige helle Fußzeile.
 - Marke: Braun, Gold, Creme, Serifenschrift. Logo in der Seite: Wortmarke als Text plus "W"-Monogramm (Platzhalter). Echte Logo-Datei (SVG/PNG) einsetzen, sobald vorhanden.
 
-## Aufbau: zwei Pakete
-- `index.html` (Root): leitet auf `business/` weiter (echte Startseite). Der Paketvergleich liegt jetzt unter `pakete.html`:
-- `pakete.html`: Paketvergleich (Starter 179 €, Business 349 €, 30 % Neukundenrabatt bis 15.11.2026, Abo 19 €/Monat, keine MwSt.), noindex.
-- `starter/`: bewusst einfacher One-Pager. Gelbe Demo-Leiste und der gestrichelte Kasten "Das fehlt im Starter-Paket" sind Verkaufshilfen, beim echten Starter entfernen.
-- `business/`: 8 Seiten (Start, Kosmetik, Nägel, Fußpflege, Brauen & Wimpern, Preise, Galerie, Termin & Kontakt) plus Impressum, Datenschutz. Animationen, Vorher-Nachher, Terminanfrage, JSON-LD (BeautySalon, FAQ, Breadcrumb), Open Graph, `sitemap.xml`/`robots.txt` im Root.
+## Aufbau
+- `index.html` (Root) leitet auf `business/` weiter, das ist die Website. Paketvergleich und Starter-Seite wurden entfernt.
+- `business/`: 8 Seiten (Start, Kosmetik, Nägel, Fußpflege, Brauen & Wimpern, Preise, Galerie, Termin & Kontakt) plus Impressum, Datenschutz. Animationen, Vorher-Nachher, Terminbuchung, JSON-LD (BeautySalon, FAQ, Breadcrumb), Open Graph, `sitemap.xml`/`robots.txt` im Root.
 - Business-Seiten werden mit einem Skript erzeugt (liegt nicht im Repo). Änderungen daher direkt in den HTML-Dateien machen oder das Skript neu schreiben.
 - `assets/`: `style.css`, `business.css`, `business.js`, `booking.js`, `booking-config.js` (Leistungen, Preise, Zeiten; Dauer sind Schätzwerte). `img/`: Stimmungsbilder von Unsplash (kostenlos, auch gewerblich, ohne Namensnennung; Unsplash-Lizenz): spa-kerzen, spa-handtuecher, empfang, kosmetik, naegel, naegel-2, fussmassage, wimpern, creme, marmor. Vorher-Nachher (`haut-1..3`) sind echte Studiofotos. Die alten Studiofotos wurden auf Wunsch der Inhaberin entfernt. Später gern durch eigene, professionelle Fotos ersetzen.
 - Domain `sunny-mails-beauty.web.app` steht in canonical, og:url, sitemap, robots: bei Domainwechsel ersetzen.

@@ -1,4 +1,4 @@
-/* Business-Paket: Ergänzungen zu style.css */
+/* Seitenspezifische Ergänzungen zu style.css */
 header.site{transition:box-shadow .3s}
 header.site.stuck{box-shadow:0 10px 24px -22px rgba(59,42,32,.45)}
 .links a[aria-current=page]{color:var(--gold)}
