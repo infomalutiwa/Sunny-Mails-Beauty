@@ -283,7 +283,7 @@ h1 em,h2 em{font-style:italic;color:var(--gold-d)}
 /* Vollbild-Hero */
 .hero2{position:relative;isolation:isolate;display:grid;place-items:center;text-align:center;color:#fff;min-height:clamp(560px,calc(100svh - 118px),820px);padding:90px 0}
 .h2-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.h2-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;animation:slowzoom 14s ease-out both}
+.h2-bg video,.h2-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 @keyframes slowzoom{from{scale:1.04}to{scale:1}}
 .hero2::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(46,34,25,.42),rgba(46,34,25,.12) 75%),linear-gradient(rgba(46,34,25,.1),rgba(46,34,25,.22))}
 .h2-in{display:flex;flex-direction:column;align-items:center;max-width:860px}
