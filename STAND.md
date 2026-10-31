@@ -10,7 +10,7 @@ Vorschau (Firebase Hosting, Projekt `sunny-mails-beauty`): https://sunny-mails-b
 - Zeiten: Mo 8–13, Di und Do 8–13 und 15–20, Mi geschlossen, Fr 10–16, Sa nach Vereinbarung, So geschlossen.
 - Preise (aus den Preislisten): Maniküre 35–60 €, Zusätze +5 €, Schmucknagel 3 €. Pediküre 43–48 €, Wohlfühlbehandlung 69 €.
   Augenbrauen 15–59 €, Wimpern 15 und 69 €, Kombi 35 und 119 €. Kosmetik: keine Preisliste vorhanden, "auf Anfrage".
-- Design (31.10.): Vollbild-Wellness-Hero (`img/hero.jpg`), Champagner-Gold (Verlauf, dunkle Schrift auf Gold-Buttons), kräftige Serife mit kursiven Akzenten, Leistungen als versetzte Bogen-Bilder, Marmor nur noch weich ausgeblendet im Studio-Bereich und CTA-Band, ruhige helle Fußzeile.
+- Design (31.10.): Palette von Sunny: Elfenbein #FDFBF7, Sand #F3EFEA, Champagner-Gold #C8A97E–#B89355 (Buttons als Verlauf, dunkle Schrift), Text #2E2A27, Salbei #D8DFD5 als dezenter Akzent (Top-Leiste, Infoleiste, Preis-Bereich). Schriften wie im Logo: Raleway + Cormorant Garamond, Überschriften DM Serif. Vollbild-Hero-Video (Querformat) und Hochformat-Video fürs Handy, Marmor nur weich ausgeblendet. Name laut Logo: Wohlfühlort Sunny.
 - Marke: Braun, Gold, Creme, Serifenschrift. Logo in der Seite: Wortmarke als Text plus "W"-Monogramm (Platzhalter). Echte Logo-Datei (SVG/PNG) einsetzen, sobald vorhanden.
 
 ## Aufbau
