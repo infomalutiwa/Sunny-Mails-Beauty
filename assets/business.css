@@ -152,18 +152,4 @@ footer .tagline{letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;c
 @media(max-width:900px){.ba-wrap.three{grid-template-columns:1fr}}
 footer .fl{flex-wrap:wrap;gap:8px 22px;padding:0 20px}
 
-
-/* Clean-Ästhetik */
-.trust{background:var(--paper)}
-.trust b{font:400 1.6rem var(--serif)}
-.trust span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
-.phero .vis,.ba,.ptable{border-radius:2px}
-.card{border-radius:0;border:0;background:transparent}
-.card .body{padding:22px 2px 6px}
-.card h3{font-size:2.1rem;font-weight:400}
-.card:hover{transform:none;box-shadow:none}
-.card .more{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
-.cta-band{background:var(--blush);color:var(--ink)}
-.cta-band .btn-gold{background:var(--ink);border-color:var(--ink);color:#fff}.cta-band .btn-gold:hover{background:var(--gold);border-color:var(--gold)}
-footer .tagline{color:var(--mut)}
-.ba span{border-radius:0;letter-spacing:.18em}
+.phero{position:relative;isolation:isolate}.phero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:linear-gradient(rgba(251,248,243,.5),rgba(251,248,243,.5)),url(../img/marmor.jpg) center/cover;-webkit-mask-image:radial-gradient(ellipse 60% 90% at 90% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 90% at 90% 40%,#000,transparent 75%)}

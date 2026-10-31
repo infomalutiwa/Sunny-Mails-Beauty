@@ -1,8 +1,8 @@
-@font-face{font-family:'Cormorant Garamond';src:url(fonts/cormorant.woff2) format('woff2');font-style:normal;font-weight:300 700;font-display:swap}
-@font-face{font-family:'Cormorant Garamond';src:url(fonts/cormorant-italic.woff2) format('woff2');font-style:italic;font-weight:300 700;font-display:swap}
+@font-face{font-family:'DM Serif Display';src:url(fonts/dmserif.woff2) format('woff2');font-style:normal;font-display:swap}
+@font-face{font-family:'DM Serif Display';src:url(fonts/dmserif-italic.woff2) format('woff2');font-style:italic;font-display:swap}
 @font-face{font-family:'Jost';src:url(fonts/jost.woff2) format('woff2');font-weight:400 600;font-display:swap}
-:root{--paper:#fbf9f6;--blush:#f6f1ea;--sand:#efe8df;--ink:#3d3530;--mut:#7a6a5e;--gold:#857060;--gold-l:#e6dccf;--line:rgba(61,53,48,.1);
-  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+:root{--paper:#fdfbf8;--blush:#f8f2ea;--sand:#f3ebe0;--ink:#4a3b31;--mut:#7a6556;--gold:#94703f;--gold-l:#eadcc6;--line:rgba(74,59,49,.13);
+  --serif:'DM Serif Display',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -265,41 +265,15 @@ mark.todo{background:#fde3ec;color:#8a1f45;padding:1px 8px;border-radius:8px;bor
 .bk-done .cta{justify-content:center;margin-top:8px}
 #bk-go:disabled{opacity:.6;cursor:wait}
 
-
-/* ===== Clean-Ästhetik: ruhig, hell, feine Linien ===== */
-body{letter-spacing:.005em}
-h1,h2,h3{font-weight:400;letter-spacing:0;line-height:1.02}
-h1{font-weight:300;font-size:clamp(3.4rem,7.6vw,7rem)}
-h2{font-weight:300;font-size:clamp(2.6rem,5.2vw,4.4rem)}
-.lead{color:var(--mut)}
-.brand{font:400 1.75rem var(--serif);letter-spacing:.01em}
-.top{background:var(--blush);color:var(--mut);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:10px 16px}
-.top a{color:var(--ink)}
-header.site{background:rgba(251,249,246,.92)}
-.links{font-weight:400;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
-.btn{border-radius:0;border-width:1px;padding:17px 34px;font:500 .74rem var(--sans);letter-spacing:.2em;text-transform:uppercase}
-header .btn{padding:13px 24px;font-size:.7rem}
-.btn-dark,.dark .btn-gold{background:var(--ink);border-color:var(--ink);color:#fff}
-.btn-dark:hover,.dark .btn-gold:hover{background:var(--gold);border-color:var(--gold)}
-.btn-line{border-color:var(--ink);color:var(--ink)}.btn-line:hover{background:var(--ink);color:#fff}
-.dark{background:var(--blush)}
-footer{background:var(--blush);border-top:1px solid var(--line)}
-.collage figure,.spa .pic,.shot,.lb img,.map{border-radius:2px}
-.book form,.bk{border-radius:2px;box-shadow:none;border:1px solid var(--line)}
-.rv{border-radius:2px}
-input[type=text],input[type=tel],input[type=email],input[type=date],textarea{border-radius:0;border-width:1px}
-.chip{border-radius:0;border-width:1px;font-size:.92rem}
-.day,.slot{border-radius:0;border-width:1px}
-.chip[aria-pressed=true],.day[aria-pressed=true],.slot[aria-pressed=true],.opts input:checked+span{background:var(--ink);border-color:var(--ink)}
-.bk-sum{border-radius:0;background:var(--blush)}
-.dock a{border-radius:0;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;border-color:var(--ink);color:var(--ink)}
-.dock a:last-child{background:var(--ink);border-color:var(--ink);color:#fff}
-.bk-done .ok{background:var(--blush);color:var(--ink)}
-.bk-done h3{font-weight:300;font-size:2.4rem}
-:focus-visible{outline:2px solid var(--gold)}
-@media(max-width:760px){h1{font-size:3.4rem}h2{font-size:2.7rem}.hero .wrap>div:first-child{border-radius:0}}
-h1 em{font-style:italic;color:var(--gold)}
-.brand,.links a,header .btn{white-space:nowrap}
-.links{gap:26px}
-@media(max-width:1180px){.links,header .btn{display:none}.burger{display:block;position:relative;z-index:81}}
-.burger{border-width:1px}
+/* ===== Marmor mit weichen Übergängen ===== */
+.dark,.cta-band,footer,.trust,.hero{position:relative;isolation:isolate}
+.dark,.cta-band,footer,.trust{background:transparent}
+.dark::before,.cta-band::before,footer::before,.trust::before,.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(rgba(251,248,243,.5),rgba(251,248,243,.5)),url(../img/marmor.jpg) center/cover}
+.dark::before{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 28%,#000 72%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 28%,#000 72%,transparent)}
+.cta-band::before{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 35%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 35%,#000 70%,transparent)}
+footer::before{background:linear-gradient(rgba(251,248,243,.6),rgba(251,248,243,.6)),url(../img/marmor.jpg) center 70%/cover;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 40%);mask-image:linear-gradient(to bottom,transparent,#000 40%)}
+.trust::before{opacity:.8;-webkit-mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent)}
+.hero::before{opacity:.55;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 85% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 80% at 85% 40%,#000,transparent 75%)}
+.top{background:var(--sand)}
+.bk-sum{background:linear-gradient(rgba(248,242,234,.8),rgba(248,242,234,.8)),url(../img/marmor.jpg) center/cover}
