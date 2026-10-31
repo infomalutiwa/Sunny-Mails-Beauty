@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Postfach – Wohlfühlraum Sunny</title>
+<title>Termine – Wohlfühlraum Sunny</title>
 <style>
 :root{--ink:#3b2a20;--mut:#8a7769;--gold:#b98a4e;--gold-l:#d9b57c;--sand:#efe3d3;--blush:#f4e4dc;--bg:#fbf8f3;--line:#eadfd1;--ok:#4f8a5b}
 *{box-sizing:border-box;margin:0}
@@ -79,6 +79,9 @@ transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;transform-ori
 .mail .act{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .tag{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--blush);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .back{display:none}
+.dh{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:10px 4px 0}
+.item.blk{background:repeating-linear-gradient(135deg,#fff 0 10px,#f7f1ea 10px 20px)}
+#view label{margin-top:16px}
 
 @media(max-width:1000px){#app{grid-template-columns:200px 1fr}#view{position:fixed;inset:0;z-index:20;background:var(--bg);border-radius:0}#view.closed{display:none}
 .back{display:inline-flex;margin-bottom:14px}}
@@ -107,18 +110,21 @@ aside.glass{flex-direction:row;overflow-x:auto;padding:10px;align-items:center}a
 <main id="app" class="hide">
   <aside class="glass">
     <div class="brand"><div class="logo">W</div><div><b>Wohlfühlraum Sunny</b><small>Postfach</small></div></div>
-    <button class="nav on" data-f="inbox">Posteingang <i id="n-inbox"></i></button>
+    <button class="nav on" data-f="termine">Termine <i id="n-termine"></i></button>
+    <button class="nav" data-f="inbox">Anfragen <i id="n-inbox"></i></button>
     <button class="nav" data-f="unread">Ungelesen <i id="n-unread"></i></button>
     <button class="nav" data-f="archiv">Archiv <i id="n-archiv"></i></button>
+    <button class="btn ghost" id="blk" type="button" style="margin-top:14px">Zeit blockieren</button>
+    <button class="btn ghost" id="ntf" type="button">Benachrichtigungen an</button>
     <div class="sp"></div>
     <div class="who" id="who"></div>
     <button class="btn ghost" id="out">Abmelden</button>
   </aside>
   <section id="list" class="glass">
-    <div class="top"><h2 class="serif" id="ltitle">Posteingang</h2><input id="q" type="search" placeholder="Suchen …"></div>
+    <div class="top"><h2 class="serif" id="ltitle">Termine</h2><input id="q" type="search" placeholder="Suchen …"></div>
     <div id="items"></div>
   </section>
-  <section id="view" class="glass closed"><div class="ph">Wähle links eine Anfrage.</div></section>
+  <section id="view" class="glass closed"><div class="ph">Wähle links einen Termin.</div></section>
 </main>
 
 <script type="module">
@@ -144,10 +150,11 @@ $('#rst').onclick=async()=>{if(!$('#em').value){msg('Bitte E-Mail eintragen.');r
 $('#out').onclick=()=>A.signOut(auth);
 
 /* Posteingang */
-let all=[],filter='inbox',sel=null,unsub=null;
+let all=[],bk=[],filter='termine',sel=null,unsub=null,unsubT=null,first=true;
 const when=d=>{if(!d)return'';const t=d.toDate?d.toDate():d,n=new Date(),same=t.toDateString()===n.toDateString();return same?t.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}):t.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})};
 const full=d=>d?(d.toDate?d.toDate():d).toLocaleString('de-DE',{dateStyle:'full',timeStyle:'short'}):'';
 function render(){
+  renderCount();if(filter==='termine'){renderT();return}
   const q=$('#q').value.toLowerCase();
   $('#n-inbox').textContent=all.filter(m=>m.status!=='archiv').length||'';
   $('#n-unread').textContent=all.filter(m=>m.status==='neu').length||'';
@@ -157,6 +164,66 @@ function render(){
   $('#items').innerHTML=rows.length?rows.map(m=>`<button class="item ${m.status==='neu'?'unread':''} ${sel===m.id?'on':''}" data-id="${m.id}"><div class="r1"><b>${esc(m.name)}</b><time>${when(m.createdAt)}</time></div><div class="s">${esc(m.service)} · ${esc(m.when)}</div></button>`).join(''):'<div class="empty">Keine Anfragen.</div>';
   if(sel&&!all.find(m=>m.id===sel))close();
 }
+
+/* ===== Termine (Direktbuchungen) ===== */
+const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const dayTxt=d=>new Date(d+'T00:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'});
+const todayIso=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')};
+function renderCount(){$('#n-termine').textContent=bk.filter(b=>b.date>=todayIso()&&b.status==='gebucht').length||''}
+function renderT(){
+  const q=$('#q').value.toLowerCase(),t=todayIso();
+  const rows=bk.filter(b=>b.date>=t).filter(b=>!q||[b.name,b.phone,(b.services||[]).join(' '),b.note].join(' ').toLowerCase().includes(q));
+  let last='';
+  $('#items').innerHTML=rows.length?rows.map(b=>{const h=b.date!==last?`<div class="dh">${new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})}</div>`:'';last=b.date;
+    return h+`<button class="item ${b.status==='blockiert'?'blk':''} ${sel===b.id?'on':''}" data-id="${b.id}"><div class="r1"><b>${hm(b.start)}–${hm(b.end)}</b><time>${b.status==='blockiert'?'blockiert':esc(b.name)}</time></div><div class="s">${b.status==='blockiert'?esc(b.name||'Gesperrt'):esc((b.services||[]).join(', '))}</div></button>`}).join(''):'<div class="empty">Keine kommenden Termine.</div>';
+  if(sel&&!bk.find(b=>b.id===sel))close();
+}
+async function cancelT(b){
+  const sl=await F.getDocs(F.query(F.collection(db,'slots'),F.where('b','==',b.id)));
+  const w=F.writeBatch(db);sl.docs.forEach(d=>w.delete(d.ref));w.delete(F.doc(db,'termine',b.id));await w.commit();
+}
+function openT(id){
+  const b=bk.find(x=>x.id===id);if(!b)return;sel=id;
+  const tel=(b.phone||'').replace(/[^\d+]/g,''),wa=tel?tel.replace(/^00/,'').replace(/^0/,'49').replace(/^\+/,''):'';
+  const when=new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})+', '+hm(b.start)+'–'+hm(b.end)+' Uhr';
+  const text=encodeURIComponent(`Hallo ${b.name}, dein Termin im Wohlfühlraum Sunny: ${when}. Wir freuen uns auf dich!`);
+  $('#view').classList.remove('closed');
+  $('#view').innerHTML=`<div class="mail"><button class="btn ghost back" id="bk">← Zurück</button><span class="tag">${b.status==='blockiert'?'Blockiert':'Gebucht'}</span><h2 class="serif">${esc(b.status==='blockiert'?(b.name||'Gesperrt'):b.name)}</h2><div class="meta">${esc(when)}${b.createdAt?' · gebucht '+esc(full(b.createdAt)):''}</div>
+  <dl>${b.status==='blockiert'?'':`<dt>Leistungen</dt><dd>${esc((b.services||[]).join('\n'))}</dd><dt>Dauer</dt><dd>${b.minutes} Min.</dd><dt>Preis</dt><dd>${b.price!=null?b.price+' €':'nach Behandlung'}</dd><dt>Telefon</dt><dd>${esc(b.phone)||'–'}</dd><dt>E-Mail</dt><dd>${esc(b.email)||'–'}</dd><dt>Notiz</dt><dd>${esc(b.note)||'–'}</dd>`}</dl>
+  <div class="act">${wa?`<a class="btn" target="_blank" rel="noopener" href="https://wa.me/${wa}?text=${text}">WhatsApp</a>`:''}${tel?`<a class="btn ghost" href="tel:${tel}">Anrufen</a>`:''}<button class="btn ghost" id="cx">${b.status==='blockiert'?'Freigeben':'Termin stornieren'}</button></div></div>`;
+  $('#cx').onclick=async()=>{if(!confirm(b.status==='blockiert'?'Zeit wieder freigeben?':'Termin stornieren? Die Zeit wird wieder online buchbar. Bitte informiere die Kundin.'))return;try{await cancelT(b)}catch(x){alert('Das hat nicht geklappt.')}};
+  $('#bk').onclick=close;render();
+}
+$('#blk').onclick=()=>{
+  sel=null;$('#view').classList.remove('closed');
+  $('#view').innerHTML=`<form class="mail" id="bf"><button class="btn ghost back" type="button" id="bk">← Zurück</button><span class="tag">Zeit blockieren</span><h2 class="serif">Zeit sperren</h2><div class="meta">Für Urlaub, Pausen oder telefonisch vereinbarte Termine. Diese Zeit ist dann online nicht buchbar.</div>
+  <label for="bd">Tag</label><input id="bd" type="date" required min="${todayIso()}">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label for="bf1">Von</label><input id="bf1" type="time" step="900" value="08:00" required></div><div><label for="bt1">Bis</label><input id="bt1" type="time" step="900" value="20:00" required></div></div>
+  <label for="br">Grund / Name</label><input id="br" type="text" placeholder="z. B. Urlaub oder Frau Müller (telefonisch)">
+  <div class="act"><button class="btn" type="submit">Sperren</button></div><div class="err" id="berr"></div></form>`;
+  $('#bk').onclick=close;
+  $('#bf').onsubmit=async e=>{e.preventDefault();
+    const d=$('#bd').value,tm=v=>{const[a,b]=v.split(':').map(Number);return a*60+b};
+    let s0=Math.floor(tm($('#bf1').value)/15)*15,e0=Math.ceil(tm($('#bt1').value)/15)*15;
+    if(!d||e0<=s0){$('#berr').textContent='Bitte Tag und gültige Zeiten wählen.';return}
+    const ex=await F.getDocs(F.query(F.collection(db,'slots'),F.where('d','==',d)));const taken=new Set(ex.docs.map(x=>x.data().m));
+    const ref=F.doc(F.collection(db,'termine')),w=F.writeBatch(db);
+    w.set(ref,{name:$('#br').value.trim()||'Gesperrt',date:d,start:s0,end:e0,minutes:e0-s0,status:'blockiert',createdAt:F.serverTimestamp()});
+    for(let m=s0;m<e0;m+=15)if(!taken.has(m))w.set(F.doc(db,'slots',d+'_'+m),{d,m,b:ref.id});
+    try{await w.commit();$('#berr').classList.add('ok');$('#berr').textContent='Gesperrt.'+(taken.size?' Bereits gebuchte Zeiten bleiben bestehen.':'')}catch(x){$('#berr').textContent='Das hat nicht geklappt.'}
+  };
+};
+/* Benachrichtigung bei neuer Buchung, solange diese Seite offen ist (auch als App auf dem Homescreen) */
+const ntfBtn=$('#ntf');
+const ntfState=()=>{if(!('Notification' in window)){ntfBtn.classList.add('hide');return}ntfBtn.textContent=Notification.permission==='granted'?'Benachrichtigungen aktiv':'Benachrichtigungen an';ntfBtn.disabled=Notification.permission==='granted'};
+ntfBtn.onclick=async()=>{await Notification.requestPermission();ntfState()};ntfState();
+function ping(b){
+  const txt=`${new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short'})}, ${hm(b.start)} Uhr: ${(b.services||[]).join(', ')}`;
+  document.title='(Neu) Termine – Wohlfühlraum Sunny';
+  if('Notification' in window&&Notification.permission==='granted'){try{new Notification('Neuer Termin: '+b.name,{body:txt,tag:b.id})}catch(e){}}
+}
+addEventListener('focus',()=>{document.title='Termine – Wohlfühlraum Sunny'});
+
 function open(id){
   const m=all.find(x=>x.id===id);if(!m)return;sel=id;
   if(m.status==='neu')F.updateDoc(F.doc(db,'anfragen',id),{status:'gelesen'});
@@ -171,18 +238,21 @@ function open(id){
   $('#del').onclick=()=>{if(confirm('Anfrage endgültig löschen?'))F.deleteDoc(F.doc(db,'anfragen',id))};
   $('#bk').onclick=close;render();
 }
-function close(){sel=null;$('#view').classList.add('closed');$('#view').innerHTML='<div class="ph">Wähle links eine Anfrage.</div>';render()}
-$('#items').onclick=e=>{const b=e.target.closest('.item');if(b)open(b.dataset.id)};
+function close(){sel=null;$('#view').classList.add('closed');$('#view').innerHTML='<div class="ph">Wähle links '+(filter==='termine'?'einen Termin':'eine Anfrage')+'.</div>';render()}
+$('#items').onclick=e=>{const b=e.target.closest('.item');if(b)(filter==='termine'?openT:open)(b.dataset.id)};
 $('#q').oninput=render;
 $$('.nav').forEach(b=>b.onclick=()=>{filter=b.dataset.f;$$('.nav').forEach(x=>x.classList.toggle('on',x===b));$('#ltitle').textContent=b.firstChild.textContent.trim();close()});
 
 A.onAuthStateChanged(auth,u=>{
-  if(unsub){unsub();unsub=null}
+  if(unsub){unsub();unsub=null}if(unsubT){unsubT();unsubT=null}first=true;
   const ok=u&&u.emailVerified;
   $('#login').classList.toggle('hide',!!ok);$('#app').classList.toggle('hide',!ok);
   if(u&&!u.emailVerified){msg('Bitte zuerst den Link in der Bestätigungsmail anklicken.');A.signOut(auth);return}
   if(!ok)return;
   $('#who').textContent=u.email;
+  unsubT=F.onSnapshot(F.query(F.collection(db,'termine'),F.where('date','>=',todayIso())),s=>{
+    if(!first)s.docChanges().forEach(c=>{if(c.type==='added'&&c.doc.data().status==='gebucht')ping(c.doc.data())});first=false;
+    bk=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a.date.localeCompare(b.date)||a.start-b.start);render()},()=>{});
   unsub=F.onSnapshot(F.query(F.collection(db,'anfragen'),F.orderBy('createdAt','desc')),s=>{all=s.docs.map(d=>({id:d.id,...d.data()}));render()},
     ()=>{$('#items').innerHTML='<div class="empty">Kein Zugriff. Dieses Konto ist nicht für das Postfach freigegeben.</div>'});
 });

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Termin anfragen und Kontakt | Wohlfühlraum Sunny Rheinfelden</title>
+<title>Termin buchen und Kontakt | Wohlfühlraum Sunny Rheinfelden</title>
 <meta name="description" content="Termin im Wohlfühlraum Sunny in Rheinfelden (Baden) anfragen. Öffnungszeiten, Adresse Müßmattstraße 22, Telefon und WhatsApp.">
 <meta name="theme-color" content="#fdfbf8">
 <meta name="referrer" content="no-referrer">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="Wohlfühlraum Sunny">
-<meta property="og:title" content="Termin anfragen und Kontakt | Wohlfühlraum Sunny Rheinfelden">
+<meta property="og:title" content="Termin buchen und Kontakt | Wohlfühlraum Sunny Rheinfelden">
 <meta property="og:description" content="Termin im Wohlfühlraum Sunny in Rheinfelden (Baden) anfragen. Öffnungszeiten, Adresse Müßmattstraße 22, Telefon und WhatsApp.">
 <meta property="og:url" content="https://sunny-mails-beauty.web.app/business/termin.html">
 <meta property="og:image" content="https://sunny-mails-beauty.web.app/img/spa-kerzen.jpg">
@@ -31,7 +31,7 @@
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Wohlfühlraum Sunny, zur Startseite"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="#94703f" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#94703f">W</text></svg><span class="bn">Wohlfühlraum Sunny<small>Dein Ort zum Aufblühen</small></span></a>
     <nav class="links" aria-label="Hauptnavigation"><a href="kosmetik.html">Kosmetik</a><a href="naegel.html">Nägel</a><a href="fusspflege.html">Fußpflege</a><a href="augenbrauen-wimpern.html">Brauen & Wimpern</a><a href="preise.html">Preise</a><a href="galerie.html">Galerie</a><a href="termin.html" aria-current="page">Termin & Kontakt</a></nav>
-    <a class="btn btn-dark" href="termin.html">Termin anfragen</a>
+    <a class="btn btn-dark" href="termin.html">Termin buchen</a>
     <button class="burger" aria-label="Menü" aria-expanded="false">☰</button>
   </div>
 </header>
@@ -42,29 +42,29 @@
   <div class="wrap">
     <div>
       <nav class="crumbs" aria-label="Brotkrumen"><a href="index.html">Start</a> · Termin &amp; Kontakt</nav>
-      <h1 style="font-size:clamp(2.6rem,5.5vw,4.4rem)">Termin anfragen</h1>
-      <p class="lead">Such dir Leistung, Tag und Uhrzeit aus. Du schickst uns deinen Wunschtermin per WhatsApp und wir bestätigen ihn dir.</p>
-      <ul class="ticks"><li><span>Online anfragen, auch außerhalb der Öffnungszeiten</span></li><li><span>Lieber persönlich? Ruf uns an: <a href="tel:+491733098632" style="text-decoration:underline">0173 3098632</a></span></li><li><span>Preise findest du in der <a href="preise.html" style="text-decoration:underline">Preisliste</a></span></li></ul>
+      <h1 style="font-size:clamp(2.6rem,5.5vw,4.4rem)">Termin buchen</h1>
+      <p class="lead">Wähle eine oder mehrere Behandlungen, dann Tag und Uhrzeit. Du siehst nur freie Zeiten und buchst direkt, ohne auf eine Antwort zu warten.</p>
+      <ul class="ticks"><li><span>Rund um die Uhr online buchen, sofort bestätigt</span></li><li><span>Mehrere Behandlungen in einem Termin kombinierbar</span></li><li><span>Lieber persönlich? Ruf uns an: <a href="tel:+491733098632" style="text-decoration:underline">0173 3098632</a></span></li><li><span>Preise findest du in der <a href="preise.html" style="text-decoration:underline">Preisliste</a></span></li></ul>
     </div>
     <form class="bk" id="bk" novalidate>
-      <div class="bk-step"><h3>Leistung</h3><div class="chips" id="bk-svc"></div></div>
+      <div class="bk-step"><h3>Leistungen <small>Mehrfachauswahl möglich</small></h3><div class="chips" id="bk-svc"></div></div>
       <div class="bk-step"><h3>Tag <small>Mi und So geschlossen, Sa nach Vereinbarung</small></h3><div class="days" id="bk-days"></div></div>
       <div class="bk-step"><h3>Uhrzeit</h3><div class="slots" id="bk-slots"></div></div>
       <div class="bk-step"><h3>Deine Angaben</h3>
         <div class="bk-two">
-          <label>Name<input type="text" name="name" id="bk-name" autocomplete="given-name" placeholder="Vorname genügt"></label>
-          <label>Notiz (optional)<input type="text" name="note" id="bk-note" placeholder="z. B. Shellac in Nude"></label>
+          <label>Name<input type="text" name="name" id="bk-name" autocomplete="name" placeholder="Vor- und Nachname"></label>
+          <label>Telefon<input type="tel" name="phone" id="bk-phone" autocomplete="tel" placeholder="Für Rückfragen"></label>
         </div>
-        <div class="bk-two" id="bk-contact" hidden style="margin-top:12px">
-          <label>Telefon<input type="text" name="phone" id="bk-phone" autocomplete="tel"></label>
-          <label>E-Mail<input type="text" name="email" id="bk-email" autocomplete="email"></label>
+        <div class="bk-two" id="bk-contact" style="margin-top:12px">
+          <label>E-Mail (optional)<input type="email" name="email" id="bk-email" autocomplete="email"></label>
+          <label>Notiz (optional)<input type="text" name="note" id="bk-note" placeholder="z. B. Shellac in Nude"></label>
         </div>
       </div>
       <div class="bk-sum" id="bk-sum" aria-live="polite" hidden></div>
       <label class="chk"><input type="checkbox" id="bk-ok"><span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen.</span></label>
       <p class="bk-err" id="bk-err" role="alert"></p>
-      <button class="btn btn-dark" type="submit" id="bk-go">Termin per WhatsApp anfragen</button>
-      <p class="hint">Deine Eingaben bleiben im Browser, bis du absendest. Lieber telefonisch: <a href="tel:+491733098632">0173 3098632</a>.</p>
+      <button class="btn btn-dark" type="submit" id="bk-go">Termin verbindlich buchen</button>
+      <p class="hint">Mit dem Absenden ist dein Termin gebucht. Lieber telefonisch: <a href="tel:+491733098632">0173 3098632</a>.</p>
     </form>
   </div>
 </section>
@@ -100,7 +100,7 @@
   <div class="fl"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="https://www.instagram.com/wohlfuehlraum_sunny" target="_blank" rel="noopener noreferrer">Instagram</a></div>
 </footer>
 
-<div class="dock"><a href="tel:+491733098632">Anrufen</a><a href="termin.html">Termin anfragen</a></div>
+<div class="dock"><a href="tel:+491733098632">Anrufen</a><a href="termin.html">Termin buchen</a></div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildansicht"><button class="x" aria-label="Schließen">✕</button><button class="p" aria-label="Vorheriges Bild">←</button><img alt=""><button class="n" aria-label="Nächstes Bild">→</button></div>
 <script src="../assets/booking-config.js"></script>
 <script src="../assets/booking.js"></script>

@@ -4,6 +4,13 @@ window.SUNNY_BOOKING={
      Leer lassen = Wunschtermin wird per WhatsApp angefragt. */
   api:'',
   whatsapp:'491733098632',
+  /* Direktbuchung über Firestore: freie Zeiten live, Doppelbuchungen ausgeschlossen. false = alter WhatsApp-Weg */
+  direct:true,
+  daysAhead:42,      /* so viele Tage im Voraus buchbar */
+  minLead:120,       /* frühestens so viele Minuten ab jetzt */
+  /* Optional: Push aufs Handy/Laptop über die kostenlose App ntfy (ntfy.sh). Themen-Adresse eintragen,
+     z. B. 'https://ntfy.sh/sunny-termine-x7k2q9'. Es werden nur Datum, Uhrzeit und Leistung gesendet, kein Name. */
+  notify:'',
   deposit:null,   /* Anzahlungsregel, z. B. {minPrice:200,minMinutes:120,percent:50}. null = keine Anzahlung */
   slotStep:30,
   /* Öffnungszeiten: Wochentag (0 = Sonntag) -> Liste von [von, bis] in Stunden. Fehlt ein Tag, ist er online nicht buchbar
