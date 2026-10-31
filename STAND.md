@@ -25,6 +25,8 @@ Vorschau (Firebase Hosting, Projekt `sunny-mails-beauty`): https://sunny-mails-b
 - Firestore: `termine/` (Kundendaten, nur Studio lesbar), `slots/{datum}_{minute}` (15-Min.-Blöcke, öffentlich lesbar, ohne Namen). Ein Block kann nur einmal angelegt werden, Doppelbuchungen sind per Regel ausgeschlossen. 12 Regeltests im Emulator bestanden.
 - Studio: `/mail` zeigt „Termine“ live, Benachrichtigung im Browser (solange die Seite offen ist, auch als App auf dem Homescreen), stornieren, „Zeit blockieren“ (Urlaub, telefonische Termine).
 - Push bei geschlossener Seite: kostenlose App ntfy, Adresse in `booking-config.js` bei `notify` eintragen. Echte Push/E-Mail-Bestätigung bräuchte Cloud Functions (Blaze-Tarif).
+- Serverseitig in den Regeln erzwungen (nicht nur im Browser): Öffnungszeiten je Wochentag (müssen zu `hours` in `booking-config.js` passen, sonst beides ändern), mindestens ca. 2,5 Std. Vorlauf, höchstens 60 Tage voraus, keine Überlappung. 20 Regeltests im Emulator plus Browser-Durchlauf (parallele Doppelbuchung, Mehrfachleistung, Vorlaufzeit) bestanden.
+- `/mail` zeigt pro Tag Termine und freie Zeiten („Noch frei: …“, „Ausgebucht“).
 - **Firestore-Regeln müssen deployt werden** (`firebase deploy --only firestore`), sonst schlägt die Buchung fehl.
 
 ## Offen

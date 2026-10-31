@@ -80,6 +80,7 @@ transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;transform-ori
 .tag{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--blush);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .back{display:none}
 .dh{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:10px 4px 0}
+.fr{font-size:.84rem;color:#6b7a5f;padding:2px 6px 10px}.fr.full{color:var(--mut)}
 .item.blk{background:repeating-linear-gradient(135deg,#fff 0 10px,#f7f1ea 10px 20px)}
 #view label{margin-top:16px}
 
@@ -127,6 +128,7 @@ aside.glass{flex-direction:row;overflow-x:auto;padding:10px;align-items:center}a
   <section id="view" class="glass closed"><div class="ph">Wähle links einen Termin.</div></section>
 </main>
 
+<script src="/assets/booking-config.js?v=6"></script>
 <script type="module">
 const V='https://www.gstatic.com/firebasejs/10.12.2/';
 const {initializeApp}=await import(V+'firebase-app.js');
@@ -170,12 +172,33 @@ const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2
 const dayTxt=d=>new Date(d+'T00:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'});
 const todayIso=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')};
 function renderCount(){$('#n-termine').textContent=bk.filter(b=>b.date>=todayIso()&&b.status==='gebucht').length||''}
+/* Freie Zeiten eines Tages: Öffnungszeiten (booking-config.js) minus gebuchte/blockierte Zeiten, heute ab jetzt */
+function freeOf(date,rows){
+  const C=window.SUNNY_BOOKING,h=C&&C.hours[new Date(date+'T00:00').getDay()];if(!h)return null;
+  const n=new Date(),nowM=date===todayIso()?Math.ceil((n.getHours()*60+n.getMinutes())/15)*15:0,out=[];
+  const busy=rows.map(b=>[b.start,b.end]).sort((a,b)=>a[0]-b[0]);
+  for(const r of h){let a=Math.max(r[0]*60,nowM);const e=r[1]*60;
+    for(const [s0,e0] of busy){if(e0<=a||s0>=e)continue;if(s0>a)out.push([a,s0]);a=Math.max(a,e0)}
+    if(a<e)out.push([a,e])}
+  return out.filter(x=>x[1]-x[0]>=30);
+}
+const itemT=b=>`<button class="item ${b.status==='blockiert'?'blk':''} ${sel===b.id?'on':''}" data-id="${b.id}"><div class="r1"><b>${hm(b.start)}–${hm(b.end)}</b><time>${b.status==='blockiert'?'blockiert':esc(b.name)}</time></div><div class="s">${b.status==='blockiert'?esc(b.name||'Gesperrt'):esc((b.services||[]).join(', '))}</div></button>`;
 function renderT(){
-  const q=$('#q').value.toLowerCase(),t=todayIso();
-  const rows=bk.filter(b=>b.date>=t).filter(b=>!q||[b.name,b.phone,(b.services||[]).join(' '),b.note].join(' ').toLowerCase().includes(q));
-  let last='';
-  $('#items').innerHTML=rows.length?rows.map(b=>{const h=b.date!==last?`<div class="dh">${new Date(b.date+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})}</div>`:'';last=b.date;
-    return h+`<button class="item ${b.status==='blockiert'?'blk':''} ${sel===b.id?'on':''}" data-id="${b.id}"><div class="r1"><b>${hm(b.start)}–${hm(b.end)}</b><time>${b.status==='blockiert'?'blockiert':esc(b.name)}</time></div><div class="s">${b.status==='blockiert'?esc(b.name||'Gesperrt'):esc((b.services||[]).join(', '))}</div></button>`}).join(''):'<div class="empty">Keine kommenden Termine.</div>';
+  const q=$('#q').value.toLowerCase(),t=todayIso(),span=(C=>C?C.daysAhead||28:28)(window.SUNNY_BOOKING);
+  const list=bk.filter(b=>b.date>=t);
+  if(q){const rows=list.filter(b=>[b.name,b.phone,(b.services||[]).join(' '),b.note].join(' ').toLowerCase().includes(q));
+    $('#items').innerHTML=rows.length?rows.map(itemT).join(''):'<div class="empty">Nichts gefunden.</div>';
+    if(sel&&!bk.find(b=>b.id===sel))close();return}
+  const by={};list.forEach(b=>(by[b.date]=by[b.date]||[]).push(b));
+  const dates=[];for(let i=0;i<span;i++){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+i);dates.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'))}
+  Object.keys(by).forEach(d=>{if(!dates.includes(d))dates.push(d)});dates.sort();
+  let html='';
+  for(const d of dates){const rows=by[d]||[],fr=freeOf(d,rows);if(!rows.length&&fr==null)continue;
+    const cnt=rows.filter(b=>b.status==='gebucht').length;
+    html+=`<div class="dh">${new Date(d+'T00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})}${cnt?` · ${cnt} Termin${cnt>1?'e':''}`:''}</div>`;
+    html+=rows.map(itemT).join('');
+    html+=fr==null?'':`<div class="fr${fr.length?'':' full'}">${fr.length?(rows.length?'Noch frei: ':'Alles frei: ')+fr.map(x=>hm(x[0])+'–'+hm(x[1])).join(', '):'Ausgebucht'}</div>`}
+  $('#items').innerHTML=html||'<div class="empty">Keine kommenden Termine.</div>';
   if(sel&&!bk.find(b=>b.id===sel))close();
 }
 async function cancelT(b){

@@ -18,6 +18,20 @@ service cloud.firestore {
 
     // Gebuchte Termine (mit Kundendaten): nur das Studio darf lesen
     match /termine/{id} {
+      // Öffnungszeiten (Minuten ab Mitternacht). r = Wochentag als Rest der Epoche-Millisekunden:
+      // Do 0, Fr 86400000, Mo 345600000, Di 432000000. Muss zu hours in assets/booking-config.js passen.
+      function inHours(r, s, e) {
+        return (r == 345600000 && s >= 480 && e <= 780)
+          || ((r == 432000000 || r == 0) && ((s >= 480 && e <= 780) || (s >= 900 && e <= 1200)))
+          || (r == 86400000 && s >= 600 && e <= 960);
+      }
+      // Termin muss in den Öffnungszeiten liegen, mindestens ca. 2,5 Std. Vorlauf haben und höchstens 60 Tage voraus liegen
+      function okTime(d) {
+        let ts = timestamp.date(int(d.date[0:4]), int(d.date[5:7]), int(d.date[8:10]));
+        return inHours(ts.toMillis() % 604800000, d.start, d.end)
+          && ts + duration.value(d.start, 'm') >= request.time + duration.value(150, 'm')
+          && ts <= request.time + duration.value(60, 'd');
+      }
       function okBooking(d) {
         return d.keys().hasOnly(['name','phone','email','note','services','date','start','end','minutes','price','createdAt','status'])
           && d.name is string && d.name.size() > 0 && d.name.size() < 120
@@ -30,6 +44,7 @@ service cloud.firestore {
           && d.start >= 360 && d.end <= 1320 && d.start % 15 == 0
           && d.end - d.start == d.minutes && d.minutes > 0 && d.minutes <= 480
           && d.status == 'gebucht'
+          && okTime(d)
           && d.createdAt == request.time
           // Anfang und Ende müssen im selben Schreibvorgang belegt werden
           && existsAfter(/databases/$(database)/documents/slots/$(d.date + '_' + string(d.start)))
