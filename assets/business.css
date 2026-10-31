@@ -65,7 +65,6 @@ header.site.stuck{box-shadow:0 10px 24px -22px rgba(59,42,32,.45)}
 .cta-band{background:linear-gradient(160deg,var(--blush),var(--sand));color:var(--ink);text-align:center;padding:clamp(56px,8vw,96px) 0}
 .cta-band h2{color:var(--ink);margin-bottom:12px}
 .cta-band p{color:var(--mut);max-width:52ch;margin:0 auto 28px}
-.cta-band .btn-gold{background:var(--gold);border-color:var(--gold);color:#fff}.cta-band .btn-gold:hover{background:var(--ink);border-color:var(--ink)}
 .cta-band .cta{justify-content:center;margin:0}
 .rel{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .rel a{padding:11px 20px;border:1.5px solid var(--line);border-radius:999px;transition:.2s}
@@ -152,4 +151,17 @@ footer .tagline{letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;c
 @media(max-width:900px){.ba-wrap.three{grid-template-columns:1fr}}
 footer .fl{flex-wrap:wrap;gap:8px 22px;padding:0 20px}
 
-.phero{position:relative;isolation:isolate}.phero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:linear-gradient(rgba(251,248,243,.5),rgba(251,248,243,.5)),url(../img/marmor.jpg) center/cover;-webkit-mask-image:radial-gradient(ellipse 60% 90% at 90% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 90% at 90% 40%,#000,transparent 75%)}
+
+/* Leistungen: versetzte Bogen-Bilder statt gleicher Karten */
+.cards.c4{grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,38px);align-items:start;margin-top:56px}
+.cards.c4 .card{background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;text-align:center}
+.cards.c4 .card:hover{transform:none;box-shadow:none}
+.cards.c4 .card:nth-child(even){margin-top:56px}
+.cards.c4 .card .pic{aspect-ratio:3/4;border-radius:999px 999px 14px 14px;box-shadow:0 30px 50px -34px rgba(59,42,32,.55)}
+.cards.c4 .card .body{padding:22px 6px 0;align-items:center}
+.cards.c4 .card h3{font-size:2rem}
+.cards.c4 .card .more{padding-top:4px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:1100px){.cards.c4{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.cards.c4{grid-template-columns:1fr 1fr;gap:14px}.cards.c4 .card h3{font-size:1.45rem}.cards.c4 .card p{display:none}.cards.c4 .card:nth-child(even){margin-top:34px}}
+.cta-band .cta{justify-content:center}
+.phero .vis{box-shadow:0 0 0 10px rgba(255,255,255,.6),0 0 0 11px rgba(169,136,79,.55)}

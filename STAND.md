@@ -10,11 +10,12 @@ Vorschau (Firebase Hosting, Projekt `sunny-mails-beauty`): https://sunny-mails-b
 - Zeiten: Mo 8–13, Di und Do 8–13 und 15–20, Mi geschlossen, Fr 10–16, Sa nach Vereinbarung, So geschlossen.
 - Preise (aus den Preislisten): Maniküre 35–60 €, Zusätze +5 €, Schmucknagel 3 €. Pediküre 43–48 €, Wohlfühlbehandlung 69 €.
   Augenbrauen 15–59 €, Wimpern 15 und 69 €, Kombi 35 und 119 €. Kosmetik: keine Preisliste vorhanden, "auf Anfrage".
-- Design (31.10.): hell, Creme/Beige, goldene runde Buttons, kräftige Serife (DM Serif) und Marmor (`img/marmor.jpg`) mit weich auslaufenden Rändern (CSS-Maske) im Hero, Vertrauensleiste, Studio-Bereich, CTA-Band, Footer. Die Variante "Clean" (feine Schrift, eckige Buttons, ohne Marmor) wurde verworfen: zu schlicht.
+- Design (31.10.): Vollbild-Wellness-Hero (`img/hero.jpg`), Champagner-Gold (Verlauf, dunkle Schrift auf Gold-Buttons), kräftige Serife mit kursiven Akzenten, Leistungen als versetzte Bogen-Bilder, Marmor nur noch weich ausgeblendet im Studio-Bereich und CTA-Band, ruhige helle Fußzeile.
 - Marke: Braun, Gold, Creme, Serifenschrift. Logo in der Seite: Wortmarke als Text plus "W"-Monogramm (Platzhalter). Echte Logo-Datei (SVG/PNG) einsetzen, sobald vorhanden.
 
 ## Aufbau: zwei Pakete
-- `index.html` (Root): Paketvergleich (Starter 179 €, Business 349 €, 30 % Neukundenrabatt bis 15.11.2026, Abo 19 €/Monat, keine MwSt.), noindex.
+- `index.html` (Root): leitet auf `business/` weiter (echte Startseite). Der Paketvergleich liegt jetzt unter `pakete.html`:
+- `pakete.html`: Paketvergleich (Starter 179 €, Business 349 €, 30 % Neukundenrabatt bis 15.11.2026, Abo 19 €/Monat, keine MwSt.), noindex.
 - `starter/`: bewusst einfacher One-Pager. Gelbe Demo-Leiste und der gestrichelte Kasten "Das fehlt im Starter-Paket" sind Verkaufshilfen, beim echten Starter entfernen.
 - `business/`: 8 Seiten (Start, Kosmetik, Nägel, Fußpflege, Brauen & Wimpern, Preise, Galerie, Termin & Kontakt) plus Impressum, Datenschutz. Animationen, Vorher-Nachher, Terminanfrage, JSON-LD (BeautySalon, FAQ, Breadcrumb), Open Graph, `sitemap.xml`/`robots.txt` im Root.
 - Business-Seiten werden mit einem Skript erzeugt (liegt nicht im Repo). Änderungen daher direkt in den HTML-Dateien machen oder das Skript neu schreiben.
